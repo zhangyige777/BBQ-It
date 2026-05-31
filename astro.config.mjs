@@ -4,7 +4,7 @@ import sitemap from '@astrojs/sitemap';
 import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
-  site: 'https://bbqitguide.com',
+  site: 'https://bbq-it-c2r.pages.dev',
   trailingSlash: 'always',
   integrations: [react(), sitemap()],
   output: 'static',

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bbqitguide.com/sitemap-index.xml
+Sitemap: https://bbq-it-c2r.pages.dev/sitemap-index.xml

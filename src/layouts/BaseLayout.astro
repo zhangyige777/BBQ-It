@@ -18,8 +18,7 @@ const siteUrl = config.seo.baseUrl;
 const canonicalURL = new URL(canonical || Astro.url.pathname, siteUrl);
 const ogImageURL = new URL(ogImage, siteUrl);
 const keywords = [...config.seo.primaryKeywords, ...config.seo.secondaryKeywords].join(', ');
-const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
-const hasGA = gaMeasurementId && !gaMeasurementId.includes('PLACEHOLDER');
+const gaMeasurementId = 'G-YNSXC49216';
 ---
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
@@ -43,19 +42,15 @@ const hasGA = gaMeasurementId && !gaMeasurementId.includes('PLACEHOLDER');
   <meta name="twitter:description" content={description} />
   <meta name="twitter:image" content={ogImageURL.href} />
 
-  <!-- Google tag (gtag.js) — TODO: Replace GA4 measurement ID -->
-  {hasGA && (
-    <>
-  <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} async></script>
-  <script is:inline define:vars={{ gaMeasurementId }}>
+  <!-- Google tag (gtag.js) -->
+  <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-YNSXC49216" async></script>
+  <script is:inline>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', gaMeasurementId);
+    gtag('config', 'G-YNSXC49216');
     function trackEvent(name,params){gtag('event',name,params);}
   </script>
-    </>
-  )}
 
   <!-- Aggressive ad: popup (only renders script when enabled in ads.ts) -->
   <AdSlot id="popup" />

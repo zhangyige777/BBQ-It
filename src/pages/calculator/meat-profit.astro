@@ -1,0 +1,56 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import MeatProfitCalculator from '@/components/MeatProfitCalculator.tsx';
+import { getMeats, generateBreadcrumbSchema, generateWebApplicationSchema } from '@/lib/data';
+
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Calculators', url: '/calculator/meat-profit/' },
+  { name: 'Meat Profit Calculator', url: '/calculator/meat-profit/' },
+]);
+const webAppSchema = generateWebApplicationSchema(
+  'BBQ It Meat Profit Calculator',
+  'Calculate your profit per meat, profit per minute, and estimated offline earnings in BBQ It.'
+);
+---
+<BaseLayout title="BBQ It Meat Profit Calculator — Calculate Your Earnings" description="Free BBQ It profit calculator. Input your meat type, grills, cook quality, and get profit per meat, profit per minute, and offline earnings estimates.">
+  <JsonLd schema={[breadcrumbSchema, webAppSchema]} />
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Meat Profit Calculator</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Calculate your meat profits, find the best meat to cook, and estimate offline earnings.</p>
+
+    <div class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl mb-8">
+      <MeatProfitCalculator client:load meats={meats.map(m => ({ id: m.id, name: m.name, rawCost: m.rawCost, cookValue: m.cookValue, perfectValue: m.perfectValue, burnValue: m.burnValue, cookTime: m.cookTime }))} />
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4">Understanding Your Results</h2>
+    <div class="space-y-3 mb-8">
+      <div class="p-3 bg-green-50 dark:bg-green-950/30 rounded-lg">
+        <strong class="text-green-700 dark:text-green-300">Profit / Meat:</strong>
+        <span class="text-sm text-gray-600 dark:text-gray-400"> Your net earnings after subtracting raw cost from the sell price.</span>
+      </div>
+      <div class="p-3 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
+        <strong class="text-blue-700 dark:text-blue-300">Profit / Min:</strong>
+        <span class="text-sm text-gray-600 dark:text-gray-400"> Total profit per minute across all your grills.</span>
+      </div>
+      <div class="p-3 bg-purple-50 dark:bg-purple-950/30 rounded-lg">
+        <strong class="text-purple-700 dark:text-purple-300">Offline Profit:</strong>
+        <span class="text-sm text-gray-600 dark:text-gray-400"> Estimated earnings during your offline duration.</span>
+      </div>
+      <div class="p-3 bg-orange-50 dark:bg-orange-950/30 rounded-lg">
+        <strong class="text-orange-700 dark:text-orange-300">Best Meat:</strong>
+        <span class="text-sm text-gray-600 dark:text-gray-400"> The meat with the highest profit per minute.</span>
+      </div>
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Best Meat', url: '/best-meat/', description: 'Best meat for each stage.' },
+      { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'Complete money-making strategies.' },
+    ]} />
+  </section>
+</BaseLayout>

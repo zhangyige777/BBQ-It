@@ -1,0 +1,76 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import { getMeats } from '@/lib/data';
+const meats = getMeats();
+---
+<ArticleLayout
+  title="BBQ It Best Meat — What to Cook at Every Stage"
+  description="Find the best meat to cook in BBQ It for early game, mid game, late game, and offline play. Stage-by-stage recommendations with profit comparisons."
+  quickAnswer="The best meat depends on your progression stage. Hot Dogs for learning, Chicken/Pork for early game, Salmon/Steak for mid game, Ribeye for late game, and Dragon Ribs for endgame."
+  faq={[
+    { question: 'What is the best meat overall in BBQ It?', answer: 'Dragon Ribs (S-tier) has the highest profit per cook, but requires expensive endgame equipment. For most players, Ribeye offers the best balance of profit and accessibility.' },
+    { question: 'What meat should beginners cook?', answer: 'Start with Hot Dogs to learn the timing, then switch to Chicken as soon as you can afford it. Chicken is the most cost-effective meat for new players.' },
+    { question: 'What is the best meat for offline grills?', answer: 'Use the highest-tier meat you can afford on offline grills. Since offline grills do not produce perfect cooks, prioritize meats with high normal cook values relative to their cost.' },
+  ]}
+  relatedGuides={[
+    { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked.' },
+    { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate profits for any meat.' },
+    { title: 'Perfect Cook Guide', url: '/perfect-cook/', description: 'Maximize your cook value.' },
+  ]}
+>
+  <DataDisclaimer />
+
+  <h2 class="text-2xl font-bold mb-4">Best Meat by Game Stage</h2>
+
+  <div class="space-y-6 mb-8">
+    <div class="p-5 border-2 border-green-300 dark:border-green-700 bg-green-50 dark:bg-green-950/30 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">🌱 Early Game (0-2K cash)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2"><strong>Best: Chicken</strong> — Good profit margins, moderate cook time. Learn perfect timing here.</p>
+      <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Secondary: Hot Dog</strong> — Use for practice only. Switch to Chicken once you have ~200 cash.</p>
+    </div>
+
+    <div class="p-5 border-2 border-blue-300 dark:border-blue-700 bg-blue-50 dark:bg-blue-950/30 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">⚔️ Mid Game (2K-15K cash)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2"><strong>Best: Salmon</strong> — Excellent profit per cook. High perfect cook bonus rewards good timing.</p>
+      <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Alternative: Pork</strong> — Lower risk, consistent income. Good when learning multi-grill management.</p>
+    </div>
+
+    <div class="p-5 border-2 border-purple-300 dark:border-purple-700 bg-purple-50 dark:bg-purple-950/30 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">🏆 Late Game (15K-50K cash)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2"><strong>Best: Steak</strong> — High profit per cook with reasonable cook time. Works well with Pro/Elite grills.</p>
+      <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Alternative: Ribeye</strong> — If you can consistently perfect cook, Ribeye outscores everything except Dragon Ribs.</p>
+    </div>
+
+    <div class="p-5 border-2 border-yellow-300 dark:border-yellow-700 bg-yellow-50 dark:bg-yellow-950/30 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">👑 Endgame (50K+ cash)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2"><strong>Best: Dragon Ribs</strong> — The ultimate meat. Massive profit when cooked perfectly with full upgrades and totems.</p>
+      <p class="text-sm text-gray-600 dark:text-gray-400"><strong>Risk: High burn penalty (80 cash loss per burn).</strong> Only cook Dragon Ribs if you have quality upgrades and can hit perfect cooks consistently.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">Best Meat for Offline Grills</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">Offline grills always cook at normal quality (no perfect cooks). This changes the profitability calculation:</p>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-gray-50 dark:bg-gray-900">
+        <tr>
+          <th class="px-4 py-2 text-left font-bold">Meat</th>
+          <th class="px-4 py-2 text-left font-bold">Raw Cost</th>
+          <th class="px-4 py-2 text-left font-bold">Normal Cook Value</th>
+          <th class="px-4 py-2 text-left font-bold">Offline Profit</th>
+        </tr>
+      </thead>
+      <tbody>
+        {[...meats].sort((a, b) => (b.cookValue - b.rawCost) - (a.cookValue - a.rawCost)).map(meat => (
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium">{meat.name}</td>
+            <td class="px-4 py-2">{meat.rawCost}</td>
+            <td class="px-4 py-2">{meat.cookValue}</td>
+            <td class="px-4 py-2 text-green-600 dark:text-green-400 font-bold">+{meat.cookValue - meat.rawCost}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</ArticleLayout>

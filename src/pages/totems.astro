@@ -1,0 +1,52 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Totems Guide — Types, Effects & Best Totems"
+  description="Complete guide to totems in BBQ It. Totem types, effects, how to get them, and best totems for each progression stage."
+  quickAnswer="Totems are passive items that provide bonuses like cook speed, quality chance, and sell value. They unlock in mid-to-late game and stack with upgrades for powerful combos."
+  faq={[
+    { question: 'What are totems in BBQ It?', answer: 'Totems are special items you place near your cooking area. They provide passive bonuses such as increased cook speed, higher perfect cook chance, or boosted sell values.' },
+    { question: 'How do I get totems?', answer: 'Totems are unlocked through progression milestones, special events, and late-game purchases. Some rare totems are obtained through limited-time events.' },
+    { question: 'Do totems stack with upgrades?', answer: 'Yes. Totem bonuses stack multiplicatively with upgrade bonuses. A cook speed totem + Blaze Cook upgrade gives a compounded speed boost.' },
+  ]}
+  relatedGuides={[
+    { title: 'Mutations Guide', url: '/mutations/', description: 'Mutation mechanics.' },
+    { title: 'Profit Strategy', url: '/profit-strategy/', description: 'Advanced profit tips.' },
+    { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades to pair with totems.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Totem Types</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">Totems fall into several categories based on the bonus they provide:</p>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">⚡ Speed Totems</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Increase cook speed on nearby grills. Stacks with speed upgrades for even faster cooking.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">🎯 Quality Totems</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Widen the perfect cook timing window. Makes it easier to hit perfect cooks consistently.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">💰 Value Totems</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Boost the sell value of cooked meats. A percentage increase that scales with meat tier.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">⚖️ Weight Totems</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Increase average meat weight. Heavier meats sell for more, especially with value bonuses.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">Best Totems by Stage</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• <strong>Mid game:</strong> Speed and Quality totems — maximize your active cooking efficiency.</li>
+    <li>• <strong>Late game:</strong> Value and Weight totems — scale with premium meats for massive profit boosts.</li>
+    <li>• <strong>Endgame:</strong> Combine all totem types around your active grill zone for maximum compounding bonuses.</li>
+  </ul>
+
+  <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
+    <p class="text-sm text-amber-800 dark:text-amber-200">
+      ⚠️ <strong>Note:</strong> Totem effects and availability may vary between game updates. Check the in-game shop for current totem options.
+    </p>
+  </div>
+</ArticleLayout>

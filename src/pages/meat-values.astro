@@ -1,0 +1,73 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getMeats, generateBreadcrumbSchema, generateItemListSchema } from '@/lib/data';
+
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Meat Values', url: '/meat-values/' },
+]);
+const itemListSchema = generateItemListSchema(
+  meats.map((m, i) => ({ name: m.name, url: `/meats/${m.slug}/`, position: i + 1 }))
+);
+---
+<BaseLayout title="BBQ It Meat Values — Complete Value Table" description="Full BBQ It meat value table with raw cost, cook value, perfect value, burn value, and profit margins for every meat type.">
+  <JsonLd schema={[breadcrumbSchema, itemListSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Meat Values</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Complete value table for every meat type in BBQ It — raw cost, cook values, and profit margins.</p>
+
+    <DataDisclaimer />
+
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-900">
+          <tr>
+            <th class="px-4 py-2 text-left font-bold">Meat</th>
+            <th class="px-4 py-2 text-left font-bold">Tier</th>
+            <th class="px-4 py-2 text-right font-bold">Raw Cost</th>
+            <th class="px-4 py-2 text-right font-bold">Normal</th>
+            <th class="px-4 py-2 text-right font-bold">Perfect</th>
+            <th class="px-4 py-2 text-right font-bold">Burnt</th>
+            <th class="px-4 py-2 text-right font-bold">Profit (Perfect)</th>
+            <th class="px-4 py-2 text-right font-bold">Cook Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {meats.map(meat => (
+            <tr class="border-t border-gray-100 dark:border-gray-800">
+              <td class="px-4 py-2 font-medium">
+                <a href={`/meats/${meat.slug}/`} class="hover:text-orange-500 transition-colors">{meat.name}</a>
+              </td>
+              <td class="px-4 py-2">{meat.tier}</td>
+              <td class="px-4 py-2 text-right">{meat.rawCost}</td>
+              <td class="px-4 py-2 text-right">{meat.cookValue}</td>
+              <td class="px-4 py-2 text-right text-green-600 dark:text-green-400 font-bold">{meat.perfectValue}</td>
+              <td class="px-4 py-2 text-right text-red-500">{meat.burnValue}</td>
+              <td class="px-4 py-2 text-right text-orange-500 font-bold">+{meat.perfectValue - meat.rawCost}</td>
+              <td class="px-4 py-2 text-right">{meat.cookTime}s</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4">Key Takeaways</h2>
+    <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+      <li>• <strong>Perfect cooks are always worth it</strong> — the profit difference between normal and perfect is massive, especially for premium meats.</li>
+      <li>• <strong>Burnt meat is a net loss</strong> — the burn value is always less than the raw cost. Avoid burns at all costs.</li>
+      <li>• <strong>Higher tier = higher risk and reward</strong> — S-tier meats like Dragon Ribs can earn huge profits but the burn penalty is severe.</li>
+      <li>• <strong>Profit per minute matters more than profit per cook</strong> — a fast-cooking meat with lower per-cook profit may earn more per minute than a slow premium meat.</li>
+    </ul>
+
+    <RelatedGuides links={[
+      { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked by tier.' },
+      { title: 'Best Meat', url: '/best-meat/', description: 'Best meat per game stage.' },
+      { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your profits.' },
+    ]} />
+  </article>
+</BaseLayout>

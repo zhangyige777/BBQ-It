@@ -1,0 +1,46 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Discord — Join the Community"
+  description="Join the official BBQ It Discord server for codes, updates, community events, trading, and help from other players."
+  quickAnswer="The official BBQ It Discord server is the best place to find new codes, get update announcements, trade tips with other players, and get help with the game."
+  faq={[
+    { question: 'Is there an official BBQ It Discord?', answer: 'Yes, the developers run an official Discord server. It is the primary source for code announcements, update news, and community discussion.' },
+    { question: 'What will I find on the BBQ It Discord?', answer: 'The Discord server has channels for announcements, codes, general chat, trading, bug reports, suggestions, and fan art. New codes are often posted there first.' },
+    { question: 'Do I need Discord to play BBQ It?', answer: 'No, Discord is completely optional. However, joining gives you early access to codes, update news, and a helpful community.' },
+  ]}
+  relatedGuides={[
+    { title: 'Codes', url: '/codes/', description: 'All working codes, updated from Discord.' },
+    { title: 'Updates', url: '/updates/', description: 'Latest update notes and changes.' },
+    { title: 'Wiki', url: '/wiki/', description: 'Complete game overview.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">What You'll Find on Discord</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">📢 Announcements</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Official updates, patch notes, and feature reveals from the developers.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">🎟️ Codes</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">New codes are posted here first. Sometimes Discord-exclusive codes are released.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">💬 Community Chat</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Discuss strategies, share tips, and talk with other BBQ It players.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">🐛 Bug Reports</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Report bugs and see known issues. Developers are active here.</p>
+    </div>
+  </div>
+
+  <div class="text-center p-8 bg-gray-50 dark:bg-gray-900 rounded-xl mb-8">
+    <p class="text-lg font-bold mb-3">Join the BBQ It Discord</p>
+    <p class="text-sm text-gray-500 mb-4">The Discord invite link is available in-game on the BBQ It Roblox page.</p>
+    <a href="https://www.roblox.com/games/placeholder/BBQ-It" target="_blank" rel="noopener noreferrer" class="inline-block px-6 py-3 bg-indigo-500 hover:bg-indigo-600 text-white font-bold rounded-lg transition-colors">
+      Open BBQ It on Roblox
+    </a>
+  </div>
+</ArticleLayout>

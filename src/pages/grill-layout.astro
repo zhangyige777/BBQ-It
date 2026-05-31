@@ -1,0 +1,56 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Grill Layout — Optimal Placement Guide"
+  description="Learn the best grill layout in BBQ It for every stage. Beginner, mid-game, and offline-focused layouts with placement tips."
+  quickAnswer="A good grill layout minimizes walking distance between grills and tables. Place grills close together and keep your table nearby for fast serving."
+  faq={[
+    { question: 'What is the best grill layout?', answer: 'The best layout clusters all grills together with the serving table adjacent. This minimizes the time spent walking between grills and tables, maximizing your cooks per minute.' },
+    { question: 'How many grills should I have?', answer: 'Start with 2-3 grills in early game, 4-5 in mid game, and 6+ in late game. Adding more grills only helps if you can manage them all without burning meat.' },
+    { question: 'Should I mix active and offline grills?', answer: 'Yes. A hybrid setup with some active grills (for perfect cooks) and some offline grills (for passive income) gives the best results for most players.' },
+  ]}
+  relatedGuides={[
+    { title: 'Grills Guide', url: '/grills/', description: 'All grills compared.' },
+    { title: 'Offline Grills', url: '/offline-grills/', description: 'How offline grills work.' },
+    { title: 'Grill Layout Planner', url: '/calculator/grill-layout/', description: 'Plan your optimal layout.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Layout Principles</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• <strong>Minimize distance</strong> — Keep grills and tables as close as possible.</li>
+    <li>• <strong>Group by type</strong> — Put active grills together and offline grills in a separate area.</li>
+    <li>• <strong>Table position</strong> — Place your table between the grill cluster and where customers arrive.</li>
+    <li>• <strong>Leave room to expand</strong> — Don't clutter your space. Leave room for future grill additions.</li>
+  </ul>
+
+  <h2 class="text-2xl font-bold mb-4">Recommended Layouts</h2>
+
+  <div class="space-y-6 mb-8">
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">🌱 Beginner Layout (2-3 grills)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Start with grills in a line near your table. Focus on 2-3 grills of the same type for easy timing management.</p>
+      <div class="font-mono text-sm bg-gray-50 dark:bg-gray-900 p-3 rounded">
+        [Table] → [Grill 1] [Grill 2] [Grill 3]
+      </div>
+    </div>
+
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">⚔️ Mid-Game Layout (4-5 grills)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Cluster active grills around the table. Add your first offline grill nearby.</p>
+      <div class="font-mono text-sm bg-gray-50 dark:bg-gray-900 p-3 rounded">
+        [Table] → [G1] [G2] [G3] [G4]<br />
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[Offline G5]
+      </div>
+    </div>
+
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold text-lg mb-2">👑 Late-Game Layout (6+ grills)</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">Separate active and offline zones. Active zone for high-profit perfect cooks, offline zone for passive income.</p>
+      <div class="font-mono text-sm bg-gray-50 dark:bg-gray-900 p-3 rounded">
+        ACTIVE ZONE:  [Table] → [G1] [G2] [G3] [G4]<br />
+        OFFLINE ZONE: [OG1] [OG2] [OG3] [Smoker]
+      </div>
+    </div>
+  </div>
+</ArticleLayout>

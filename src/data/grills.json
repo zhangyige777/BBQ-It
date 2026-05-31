@@ -1,0 +1,104 @@
+{
+  "grills": [
+    {
+      "id": "basic-grill",
+      "name": "Basic Grill",
+      "slug": "basic-grill",
+      "cost": 0,
+      "slots": 2,
+      "cookSpeed": 1.0,
+      "offline": false,
+      "tier": "Starter",
+      "description": "The starting grill. Holds 2 meats at once. Cannot cook offline."
+    },
+    {
+      "id": "standard-grill",
+      "name": "Standard Grill",
+      "slug": "standard-grill",
+      "cost": 500,
+      "slots": 3,
+      "cookSpeed": 1.0,
+      "offline": false,
+      "tier": "Basic",
+      "description": "An upgraded grill with 3 slots. Faster turnaround for active cooking."
+    },
+    {
+      "id": "pro-grill",
+      "name": "Pro Grill",
+      "slug": "pro-grill",
+      "cost": 2000,
+      "slots": 4,
+      "cookSpeed": 1.1,
+      "offline": false,
+      "tier": "Mid",
+      "description": "Professional grill with 4 slots and 10% faster cook speed."
+    },
+    {
+      "id": "elite-grill",
+      "name": "Elite Grill",
+      "slug": "elite-grill",
+      "cost": 8000,
+      "slots": 5,
+      "cookSpeed": 1.2,
+      "offline": false,
+      "tier": "Advanced",
+      "description": "Elite grill with 5 slots and 20% faster cook speed. Great for high-volume cooking."
+    },
+    {
+      "id": "offline-grill-basic",
+      "name": "Offline Grill (Basic)",
+      "slug": "offline-grill-basic",
+      "cost": 3000,
+      "slots": 3,
+      "cookSpeed": 0.8,
+      "offline": true,
+      "tier": "Mid",
+      "description": "Earns money while you're away. Slower cook speed but passive income."
+    },
+    {
+      "id": "offline-grill-pro",
+      "name": "Offline Grill (Pro)",
+      "slug": "offline-grill-pro",
+      "cost": 10000,
+      "slots": 4,
+      "cookSpeed": 0.9,
+      "offline": true,
+      "tier": "Advanced",
+      "description": "High-capacity offline grill. Better passive earnings than the basic version."
+    },
+    {
+      "id": "offline-grill-elite",
+      "name": "Offline Grill (Elite)",
+      "slug": "offline-grill-elite",
+      "cost": 25000,
+      "slots": 6,
+      "cookSpeed": 1.0,
+      "offline": true,
+      "tier": "Endgame",
+      "description": "The best offline grill. 6 slots with full cook speed for maximum passive income."
+    },
+    {
+      "id": "smoker-basic",
+      "name": "Basic Smoker",
+      "slug": "smoker-basic",
+      "cost": 5000,
+      "slots": 2,
+      "cookSpeed": 0.6,
+      "offline": true,
+      "tier": "Mid",
+      "description": "Smokes meat slowly for a quality bonus. Works offline."
+    },
+    {
+      "id": "smoker-pro",
+      "name": "Pro Smoker",
+      "slug": "smoker-pro",
+      "cost": 15000,
+      "slots": 3,
+      "cookSpeed": 0.7,
+      "offline": true,
+      "tier": "Advanced",
+      "description": "Advanced smoker with quality and weight bonuses. Great for premium meats."
+    }
+  ],
+  "_disclaimer": "All values are estimates based on community data. Actual in-game values may differ after updates."
+}

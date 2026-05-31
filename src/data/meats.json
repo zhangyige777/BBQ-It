@@ -1,0 +1,103 @@
+{
+  "meats": [
+    {
+      "id": "hotdog",
+      "name": "Hot Dog",
+      "slug": "hotdog",
+      "rawCost": 5,
+      "cookValue": 12,
+      "perfectValue": 20,
+      "burnValue": 3,
+      "cookTime": 8,
+      "weight": 0.3,
+      "tier": "D",
+      "description": "Cheap and quick to cook. Good for beginners learning the basics.",
+      "tags": ["beginner", "cheap", "fast"]
+    },
+    {
+      "id": "chicken",
+      "name": "Chicken",
+      "slug": "chicken",
+      "rawCost": 15,
+      "cookValue": 35,
+      "perfectValue": 55,
+      "burnValue": 8,
+      "cookTime": 15,
+      "weight": 0.8,
+      "tier": "C",
+      "description": "A solid early-game meat with decent profit margins. Cooks at moderate speed.",
+      "tags": ["early-game", "balanced"]
+    },
+    {
+      "id": "pork",
+      "name": "Pork",
+      "slug": "pork",
+      "rawCost": 25,
+      "cookValue": 55,
+      "perfectValue": 85,
+      "burnValue": 12,
+      "cookTime": 20,
+      "weight": 1.2,
+      "tier": "C",
+      "description": "Reliable mid-tier meat. Good profit when cooked perfectly.",
+      "tags": ["mid-game", "profit"]
+    },
+    {
+      "id": "salmon",
+      "name": "Salmon",
+      "slug": "salmon",
+      "rawCost": 40,
+      "cookValue": 80,
+      "perfectValue": 130,
+      "burnValue": 18,
+      "cookTime": 18,
+      "weight": 1.5,
+      "tier": "B",
+      "description": "High-value fish with excellent perfect cook bonus. Burns easily if mistimed.",
+      "tags": ["mid-game", "high-reward", "fish"]
+    },
+    {
+      "id": "steak",
+      "name": "Steak",
+      "slug": "steak",
+      "rawCost": 60,
+      "cookValue": 120,
+      "perfectValue": 200,
+      "burnValue": 25,
+      "cookTime": 25,
+      "weight": 2.0,
+      "tier": "B",
+      "description": "Premium meat with strong profit. Requires good timing for perfect cooks.",
+      "tags": ["mid-game", "premium", "high-profit"]
+    },
+    {
+      "id": "ribeye",
+      "name": "Ribeye",
+      "slug": "ribeye",
+      "rawCost": 100,
+      "cookValue": 200,
+      "perfectValue": 350,
+      "burnValue": 40,
+      "cookTime": 30,
+      "weight": 2.8,
+      "tier": "A",
+      "description": "Top-tier steak with massive perfect cook bonus. High risk, high reward.",
+      "tags": ["late-game", "premium", "very-high-profit"]
+    },
+    {
+      "id": "dragon-ribs",
+      "name": "Dragon Ribs",
+      "slug": "dragon-ribs",
+      "rawCost": 200,
+      "cookValue": 400,
+      "perfectValue": 700,
+      "burnValue": 80,
+      "cookTime": 40,
+      "weight": 4.0,
+      "tier": "S",
+      "description": "The rarest and most profitable meat. Extremely high perfect cook value but long cook time and high burn penalty.",
+      "tags": ["endgame", "legendary", "max-profit"]
+    }
+  ],
+  "_disclaimer": "All values are estimates based on community data. Actual in-game values may differ after updates."
+}

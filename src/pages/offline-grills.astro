@@ -1,0 +1,93 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getOfflineGrills, getMeats, generateBreadcrumbSchema } from '@/lib/data';
+
+const offlineGrills = getOfflineGrills().filter(g => !g.name.includes('Smoker'));
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Offline Grills', url: '/offline-grills/' },
+]);
+---
+<BaseLayout title="BBQ It Offline Grills — Earn Money While Away" description="Complete guide to offline grills in BBQ It. Setup, best meats for offline, expected earnings, and how to maximize passive income.">
+  <JsonLd schema={[breadcrumbSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Offline Grills Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Offline grills cook while you are away from the game, earning you passive income. Here is everything you need to know about setting up and maximizing offline earnings.</p>
+
+    <DataDisclaimer />
+
+    <!-- Quick Summary -->
+    <div class="mb-8 p-4 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 rounded-lg">
+      <p class="font-medium text-orange-800 dark:text-orange-200">
+        😴 <strong>Key Fact:</strong> Offline grills cook at normal quality only (no perfect cooks). The highest-tier meat you can afford on offline grills is usually the best choice. Earnings are capped by your Offline Storage upgrade.
+      </p>
+    </div>
+
+    <!-- Available Offline Grills -->
+    <h2 class="text-2xl font-bold mb-4">Offline Grills</h2>
+    <div class="space-y-4 mb-8">
+      {offlineGrills.map(grill => (
+        <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold">{grill.name}</h3>
+            <span class="text-sm font-bold text-orange-500">{grill.cost.toLocaleString()} cash</span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400">{grill.description}</p>
+          <div class="flex gap-4 mt-2 text-xs text-gray-500">
+            <span>{grill.slots} slots</span>
+            <span>{(grill.cookSpeed * 100).toFixed(0)}% cook speed</span>
+            <span class="font-bold text-green-600">Passive income</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Best Meats for Offline -->
+    <h2 class="text-2xl font-bold mb-4">Best Meats for Offline Grills</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">Since offline grills produce normal cooks only, rank meats by normal cook profit:</p>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-900">
+          <tr>
+            <th class="px-4 py-2 text-left font-bold">Meat</th>
+            <th class="px-4 py-2 text-right font-bold">Normal Value</th>
+            <th class="px-4 py-2 text-right font-bold">Offline Profit</th>
+            <th class="px-4 py-2 text-right font-bold">Cook Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          {[...meats].sort((a, b) => (b.cookValue - b.rawCost) - (a.cookValue - a.rawCost)).map(meat => (
+            <tr class="border-t border-gray-100 dark:border-gray-800">
+              <td class="px-4 py-2 font-medium">{meat.name}</td>
+              <td class="px-4 py-2 text-right">{meat.cookValue}</td>
+              <td class="px-4 py-2 text-right text-green-600 font-bold">+{meat.cookValue - meat.rawCost}</td>
+              <td class="px-4 py-2 text-right">{meat.cookTime}s</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Setup Tips -->
+    <h2 class="text-2xl font-bold mb-4">Offline Setup Tips</h2>
+    <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+      <li>• <strong>Upgrade Offline Storage first</strong> — Without it, your offline earnings cap is low and you lose potential income.</li>
+      <li>• <strong>Use your best available meat</strong> — Higher-tier meats earn more per cook even at normal quality.</li>
+      <li>• <strong>More offline grills = more income</strong> — Each additional offline grill adds to your passive earnings.</li>
+      <li>• <strong>Check back regularly</strong> — Offline earnings stop accumulating once you hit the cap. Log in to collect and reset.</li>
+      <li>• <strong>Offline Efficiency upgrade</strong> — This speeds up offline cooking by 25%, significantly boosting passive income.</li>
+    </ul>
+
+    <RelatedGuides links={[
+      { title: 'Grills Guide', url: '/grills/', description: 'All grills compared.' },
+      { title: 'Offline Profit Calculator', url: '/calculator/offline-profit/', description: 'Estimate your offline earnings.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'Complete money-making strategies.' },
+      { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades for offline play.' },
+    ]} />
+  </article>
+</BaseLayout>

@@ -1,0 +1,97 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getUpgrades, getUpgradesByCategory, generateBreadcrumbSchema } from '@/lib/data';
+
+const allUpgrades = getUpgrades();
+const categories = [...new Set(allUpgrades.map(u => u.category))];
+const categoryNames: Record<string, string> = {
+  tables: 'Tables',
+  speed: 'Cook Speed',
+  quality: 'Cook Quality',
+  offline: 'Offline',
+  automation: 'Automation',
+  weight: 'Weight',
+};
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Upgrades Guide', url: '/upgrades/' },
+]);
+---
+<BaseLayout title="BBQ It Upgrades Guide — Best Upgrades Ranked" description="All BBQ It upgrades ranked and categorized. Find the best upgrades for speed, quality, offline earnings, and profit at every stage.">
+  <JsonLd schema={[breadcrumbSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Upgrades Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Every upgrade in BBQ It ranked by priority and return on investment. Know what to buy and when.</p>
+
+    <DataDisclaimer />
+
+    <!-- Priority Order -->
+    <h2 class="text-2xl font-bold mb-4">Recommended Purchase Order</h2>
+    <ol class="list-decimal list-inside space-y-3 mb-8">
+      <li class="p-3 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <strong>Metal Table</strong> (800) — Doubles customer capacity. Instant ROI.
+      </li>
+      <li class="p-3 border-l-4 border-orange-400 bg-orange-50/50 dark:bg-orange-950/20 rounded-r-lg">
+        <strong>Standard Grill</strong> (500) — Extra cooking slot for more throughput.
+      </li>
+      <li class="p-3 border-l-4 border-orange-400 bg-orange-50/50 dark:bg-orange-950/20 rounded-r-lg">
+        <strong>Quick Hands</strong> (500) — +10% cook speed across all grills.
+      </li>
+      <li class="p-3 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-950/30 rounded-r-lg">
+        <strong>Seasoned Chef</strong> (1,000) — +15% perfect cook chance. More perfects = more profit.
+      </li>
+      <li class="p-3 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-950/30 rounded-r-lg">
+        <strong>Auto Sell</strong> (4,000) — Essential for AFK and multi-tasking.
+      </li>
+      <li class="p-3 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+        <strong>Offline Grill (Basic)</strong> (3,000) — Start earning passive income.
+      </li>
+      <li class="p-3 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+        <strong>Offline Storage</strong> (3,000) — Increase your offline earnings cap.
+      </li>
+      <li class="p-3 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-950/30 rounded-r-lg">
+        <strong>Premium Table</strong> (3,000) — 3 customers + 10% offer boost.
+      </li>
+      <li class="p-3 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-950/30 rounded-r-lg">
+        <strong>Master Chef</strong> (5,000) — +30% perfect cook chance.
+      </li>
+      <li class="p-3 border-l-4 border-gray-400 bg-gray-50 dark:bg-gray-900 rounded-r-lg">
+        Continue with remaining upgrades based on your play style.
+      </li>
+    </ol>
+
+    <!-- All Upgrades by Category -->
+    <h2 class="text-2xl font-bold mb-4">All Upgrades by Category</h2>
+    {categories.map(cat => {
+      const upgrades = getUpgradesByCategory(cat);
+      return (
+        <section class="mb-6">
+          <h3 class="text-xl font-bold mb-3">{categoryNames[cat] || cat}</h3>
+          <div class="space-y-2">
+            {upgrades.map(upgrade => (
+              <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">
+                <div>
+                  <span class="font-medium">{upgrade.name}</span>
+                  <span class="text-sm text-gray-500 ml-2">— {upgrade.effect}</span>
+                </div>
+                <span class="text-sm font-bold text-orange-500 shrink-0 ml-3">
+                  {upgrade.cost === 0 ? 'Free' : `${upgrade.cost.toLocaleString()}`}
+                </span>
+              </div>
+            ))}
+          </div>
+        </section>
+      );
+    })}
+
+    <RelatedGuides links={[
+      { title: 'What to Buy First', url: '/what-to-buy-first/', description: 'Detailed purchase priority guide.' },
+      { title: 'Upgrade ROI Calculator', url: '/calculator/upgrade-roi/', description: 'Find the best upgrade to buy.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'How to earn money for upgrades.' },
+    ]} />
+  </article>
+</BaseLayout>

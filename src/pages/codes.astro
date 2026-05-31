@@ -1,0 +1,105 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import FAQItem from '@/components/FAQItem.astro';
+import CopyButton from '@/components/CopyButton.tsx';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getActiveCodes, getExpiredCodes, generateBreadcrumbSchema, generateFAQSchema, getCurrentDateString } from '@/lib/data';
+
+const activeCodes = getActiveCodes();
+const expiredCodes = getExpiredCodes();
+const dateStr = getCurrentDateString();
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Codes', url: '/codes/' },
+]);
+
+const faqItems = [
+  { question: 'How do I redeem codes in BBQ It?', answer: 'Open BBQ It in Roblox, look for the Twitter or code button on the side of the screen (usually a bird icon or "Codes" text), click it, enter your code, and press Redeem. The reward will be added to your account immediately.' },
+  { question: 'How often are new BBQ It codes released?', answer: 'New codes are typically released during updates, milestones, holidays, and special events. The developers announce codes on the official Discord server and social media. We update this page as soon as new codes are found.' },
+  { question: 'Why is my BBQ It code not working?', answer: 'Codes may be expired, entered incorrectly (codes are case-sensitive), or already redeemed on your account. Double-check the spelling and try copying the code directly using the Copy button.' },
+  { question: 'Can I use BBQ It codes more than once?', answer: 'No, each code can only be redeemed once per account. If you already used a code, it will not work again.' },
+  { question: 'Where can I find the latest BBQ It codes?', answer: 'The best sources are the official BBQ It Discord server and this page. We check for new codes daily and update immediately when new ones are released.' },
+];
+
+const faqSchema = generateFAQSchema(faqItems);
+---
+<BaseLayout title={`BBQ It Codes (${dateStr}) — All Working Roblox Codes`} description="All working BBQ It Roblox codes for June 2026. Get free cash, XP boosts, and exclusive rewards. Updated daily.">
+  <JsonLd schema={[breadcrumbSchema, faqSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Codes <span class="text-orange-500">({dateStr})</span></h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">All working Roblox BBQ It codes for free cash, XP, and rewards. Updated daily.</p>
+
+    <!-- Active Codes -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6 flex items-center gap-2">
+        <span class="text-green-500">✅</span> Active Codes ({activeCodes.length})
+      </h2>
+      {activeCodes.length === 0 ? (
+        <p class="text-gray-500">No active codes right now. Check back soon!</p>
+      ) : (
+        <div class="space-y-3">
+          {activeCodes.map(code => (
+            <div class="flex items-center justify-between p-4 border border-gray-200 dark:border-gray-800 rounded-lg bg-white dark:bg-gray-900">
+              <div class="flex items-center gap-3 flex-1 min-w-0">
+                <code class="font-mono font-bold text-orange-500 text-lg">{code.code}</code>
+                <span class="text-gray-500 truncate">— {code.reward}</span>
+                {code.isNew && <span class="shrink-0 px-2 py-0.5 bg-green-100 dark:bg-green-900 text-green-700 dark:text-green-300 text-xs font-bold rounded">NEW</span>}
+              </div>
+              <div class="shrink-0 ml-3">
+                <CopyButton client:load text={code.code} />
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
+    </section>
+
+    <!-- How to Redeem -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-4">How to Redeem BBQ It Codes</h2>
+      <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400">
+        <li>Open <strong>BBQ It</strong> in Roblox.</li>
+        <li>Find the <strong>Codes</strong> button on the side of the screen (Twitter icon or "Codes" text).</li>
+        <li>Click it to open the code input box.</li>
+        <li>Type or paste your code exactly as shown (codes are case-sensitive).</li>
+        <li>Press <strong>Redeem</strong> to claim your reward.</li>
+      </ol>
+    </section>
+
+    <!-- Expired Codes -->
+    {expiredCodes.length > 0 && (
+      <section class="mb-12">
+        <h2 class="text-2xl font-bold mb-4 flex items-center gap-2">
+          <span class="text-red-500">❌</span> Expired Codes
+        </h2>
+        <div class="space-y-2">
+          {expiredCodes.map(code => (
+            <div class="flex items-center gap-3 p-3 border border-gray-200 dark:border-gray-800 rounded-lg bg-gray-50 dark:bg-gray-900 opacity-60">
+              <code class="font-mono line-through text-gray-400">{code.code}</code>
+              <span class="text-gray-400 text-sm">— {code.reward}</span>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Codes FAQ</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => <FAQItem question={item.question} answer={item.answer} />)}
+      </div>
+    </section>
+
+    <!-- Related -->
+    <RelatedGuides links={[
+      { title: 'Beginner Guide', url: '/beginner-guide/', description: 'Learn how to play BBQ It from scratch.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'How to make money fast in BBQ It.' },
+      { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your meat profits.' },
+      { title: 'Wiki', url: '/wiki/', description: 'Complete BBQ It wiki and game overview.' },
+    ]} />
+  </article>
+</BaseLayout>

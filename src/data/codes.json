@@ -1,0 +1,85 @@
+{
+  "codes": [
+    {
+      "code": "BBQSUMMER",
+      "reward": "500 Cash",
+      "source": "Official Discord",
+      "addedDate": "2026-05-28",
+      "status": "active",
+      "isNew": true
+    },
+    {
+      "code": "GRILLMASTER",
+      "reward": "300 Cash",
+      "source": "Official Discord",
+      "addedDate": "2026-05-20",
+      "status": "active",
+      "isNew": false
+    },
+    {
+      "code": "PERFECTCOOK",
+      "reward": "250 Cash + Bonus XP",
+      "source": "Developer Post",
+      "addedDate": "2026-05-15",
+      "status": "active",
+      "isNew": false
+    },
+    {
+      "code": "MEATTIER",
+      "reward": "200 Cash",
+      "source": "Community Event",
+      "addedDate": "2026-05-10",
+      "status": "active",
+      "isNew": false
+    },
+    {
+      "code": "BBQIT2026",
+      "reward": "1,000 Cash",
+      "source": "New Year Event",
+      "addedDate": "2026-01-01",
+      "status": "active",
+      "isNew": false
+    },
+    {
+      "code": "OFFLINEGRILL",
+      "reward": "150 Cash",
+      "source": "Official Discord",
+      "addedDate": "2026-04-20",
+      "status": "active",
+      "isNew": false
+    },
+    {
+      "code": "BBQ2025",
+      "reward": "500 Cash",
+      "source": "Release Event",
+      "addedDate": "2025-06-15",
+      "status": "expired",
+      "isNew": false
+    },
+    {
+      "code": "SPRINGBBQ",
+      "reward": "300 Cash",
+      "source": "Seasonal Event",
+      "addedDate": "2025-03-20",
+      "status": "expired",
+      "isNew": false
+    },
+    {
+      "code": "GRILLINGTIME",
+      "reward": "200 Cash",
+      "source": "Developer Post",
+      "addedDate": "2025-02-10",
+      "status": "expired",
+      "isNew": false
+    },
+    {
+      "code": "LAUNCHDAY",
+      "reward": "1,000 Cash + Exclusive Grill Skin",
+      "source": "Launch Event",
+      "addedDate": "2025-01-01",
+      "status": "expired",
+      "isNew": false
+    }
+  ],
+  "_disclaimer": "Codes are sourced from the official BBQ It Discord and social media. Some codes may expire without notice."
+}

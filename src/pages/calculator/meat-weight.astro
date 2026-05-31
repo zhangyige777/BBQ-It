@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import MeatWeightCalculator from '@/components/MeatWeightCalculator.tsx';
+import { getMeats, generateBreadcrumbSchema, generateWebApplicationSchema } from '@/lib/data';
+
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Meat Weight Calculator', url: '/calculator/meat-weight/' },
+]);
+const webAppSchema = generateWebApplicationSchema(
+  'BBQ It Meat Weight Calculator',
+  'Calculate sell value based on meat weight, multipliers, and cook quality in BBQ It.'
+);
+---
+<BaseLayout title="BBQ It Meat Weight Calculator — Value by Weight" description="Free BBQ It meat weight calculator. Calculate sell value based on meat weight, weight multiplier, and cook quality.">
+  <JsonLd schema={[breadcrumbSchema, webAppSchema]} />
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Meat Weight Calculator</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Calculate how meat weight affects sell value and find the most profitable weight-to-value ratio.</p>
+
+    <div class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl mb-8">
+      <MeatWeightCalculator client:load meats={meats.map(m => ({ id: m.id, name: m.name, rawCost: m.rawCost, cookValue: m.cookValue, perfectValue: m.perfectValue, cookTime: m.cookTime, weight: m.weight }))} />
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Heaviest Meat Guide', url: '/heaviest-meat/', description: 'Weight rankings and mechanics.' },
+      { title: 'Meat Values', url: '/meat-values/', description: 'Complete value table.' },
+      { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked.' },
+    ]} />
+  </section>
+</BaseLayout>

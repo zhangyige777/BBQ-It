@@ -1,0 +1,60 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import { getMeats } from '@/lib/data';
+const meats = getMeats();
+---
+<ArticleLayout
+  title="BBQ It Perfect Temperature Guide — Ideal Cook Temps"
+  description="Learn the perfect temperature for each meat in BBQ It. Temperature guide with ideal ranges, timing tips, and how to read the cook indicator."
+  quickAnswer="Each meat in BBQ It has an ideal temperature range for perfect cooks. This guide covers the temperature mechanics, ideal ranges per meat, and how to read the cooking indicator."
+  faq={[
+    { question: 'How does temperature work in BBQ It?', answer: 'As meat cooks, its temperature rises. There is a specific temperature range where removing the meat gives a perfect cook. Going past this range leads to burning.' },
+    { question: 'Is temperature the same as cook time?', answer: 'They are related but not identical. Temperature rises with time, but cook speed upgrades affect how fast the temperature rises. The perfect temperature window stays the same regardless of speed.' },
+    { question: 'Can I see the exact temperature?', answer: 'BBQ It uses visual indicators rather than exact numbers. The meat changes color as it cooks — watch for the golden glow that signals the perfect window.' },
+  ]}
+  relatedGuides={[
+    { title: 'Perfect Cook Guide', url: '/perfect-cook/', description: 'Complete perfect cooking guide.' },
+    { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked.' },
+    { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your profits.' },
+  ]}
+>
+  <DataDisclaimer />
+
+  <h2 class="text-2xl font-bold mb-4">Temperature Mechanics</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">In BBQ It, each meat has a cook progression shown by a visual indicator. The temperature rises from raw → cooking → done → perfect window → burning. Your goal is to remove the meat during the "perfect window" phase.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Ideal Cook Ranges</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-gray-50 dark:bg-gray-900">
+        <tr>
+          <th class="px-4 py-2 text-left font-bold">Meat</th>
+          <th class="px-4 py-2 text-left font-bold">Cook Time</th>
+          <th class="px-4 py-2 text-left font-bold">Perfect Window</th>
+          <th class="px-4 py-2 text-left font-bold">Difficulty</th>
+        </tr>
+      </thead>
+      <tbody>
+        {meats.map(meat => (
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium">{meat.name}</td>
+            <td class="px-4 py-2">{meat.cookTime}s</td>
+            <td class="px-4 py-2">~{Math.round(meat.cookTime * 0.8)}s – {meat.cookTime}s</td>
+            <td class="px-4 py-2">
+              {meat.tier === 'S' || meat.tier === 'A' ? '🔴 Hard' : meat.tier === 'B' ? '🟡 Medium' : '🟢 Easy'}
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Temperature Tips</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• <strong>Watch the color change</strong> — meats shift from pink/red → golden → dark brown. Remove during golden.</li>
+    <li>• <strong>Longer cook times = wider window</strong> — premium meats have a narrower perfect window relative to cook time.</li>
+    <li>• <strong>Quality upgrades help</strong> — Seasoned Chef and higher tiers widen the perfect temperature window.</li>
+    <li>• <strong>Cook speed shortens everything</strong> — faster cooking means you need quicker reactions for the perfect window.</li>
+  </ul>
+</ArticleLayout>

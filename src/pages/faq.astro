@@ -1,0 +1,30 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const faqItems = [
+  { question: 'What is BBQ It?', answer: 'BBQ It is a cooking tycoon game on Roblox where you grill meats, serve customers, upgrade equipment, and build a BBQ empire to earn as much money as possible.' },
+  { question: 'How do I cook meat in BBQ It?', answer: 'Buy raw meat from the shop, place it on a grill, wait for it to cook, and remove it at the right time. Perfect timing gives you a "perfect cook" which sells for much more.' },
+  { question: 'What happens if I overcook meat?', answer: 'Overcooked meat becomes burnt and sells for very little — usually less than the raw cost. It is better to remove meat early (raw) than to let it burn.' },
+  { question: 'How do I get more grills?', answer: 'You can buy additional grills from the shop using cash. Each grill type has different slot counts, cook speeds, and prices. See our Grills Guide for the full list.' },
+  { question: 'What are offline grills?', answer: 'Offline grills are special grills that continue cooking while you are not in the game. They are more expensive but provide passive income. You need the Offline Storage upgrade to maximize earnings.' },
+  { question: 'How do perfect cooks work?', answer: 'Each meat has a specific cook window. If you remove it during the "perfect" moment (indicated by a visual cue), you get a perfect cook worth roughly double the normal value.' },
+  { question: 'What are totems?', answer: 'Totems are special items that provide passive bonuses like increased cook speed, better quality chance, or higher sell values. They are unlocked in mid-to-late game.' },
+  { question: 'What are mutations?', answer: 'Mutations are random modifiers that can appear on meats, changing their weight, value, or other properties. Some mutations are rare and very valuable.' },
+  { question: 'How do I redeem codes?', answer: 'Click the Codes button (Twitter icon) on the side of the screen, enter the code, and press Redeem. Codes are case-sensitive and can only be used once per account.' },
+  { question: 'Is BBQ It free?', answer: 'Yes, BBQ It is completely free to play on Roblox. There are optional in-game purchases with Robux, but all core mechanics are accessible for free.' },
+  { question: 'What is the best meat in BBQ It?', answer: 'Dragon Ribs (S-tier) has the highest profit potential, but requires endgame equipment. For mid-game, Ribeye and Salmon are excellent choices. See our Meat Tier List for full rankings.' },
+  { question: 'How do I make money fast in BBQ It?', answer: 'Focus on perfect cooks, upgrade to better tables for higher customer offers, invest in offline grills for passive income, and use the right meat for your progression stage. See our Money Guide for detailed strategies.' },
+];
+---
+<ArticleLayout
+  title="BBQ It FAQ — Frequently Asked Questions"
+  description="Common questions about BBQ It on Roblox answered. Covers cooking, grills, upgrades, codes, offline play, and more."
+  quickAnswer="Answers to the most common questions about BBQ It on Roblox — from basic gameplay to advanced mechanics."
+  faq={faqItems}
+  relatedGuides={[
+    { title: 'Codes', url: '/codes/', description: 'All working BBQ It codes.' },
+    { title: 'Beginner Guide', url: '/beginner-guide/', description: 'Learn how to play from scratch.' },
+    { title: 'Wiki', url: '/wiki/', description: 'Complete game overview.' },
+  ]}
+>
+</ArticleLayout>

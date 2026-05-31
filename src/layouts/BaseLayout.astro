@@ -1,0 +1,74 @@
+---
+import Header from '@/components/Header.astro';
+import Footer from '@/components/Footer.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import { getGameConfig } from '@/lib/data';
+import '@/styles/global.css';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  ogImage?: string;
+}
+
+const config = getGameConfig();
+const { title = config.seo.siteTitle, description = config.seo.siteDescription, canonical, ogImage = '/favicon.svg' } = Astro.props;
+const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+const keywords = [...config.seo.primaryKeywords, ...config.seo.secondaryKeywords].join(', ');
+---
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <meta name="theme-color" content="#ea580c" />
+  <title>{title}</title>
+  <meta name="description" content={description} />
+  <meta name="keywords" content={keywords} />
+  <link rel="canonical" href={canonicalURL.href} />
+  <meta property="og:title" content={title} />
+  <meta property="og:description" content={description} />
+  <meta property="og:url" content={canonicalURL.href} />
+  <meta property="og:image" content={`${config.seo.baseUrl}${ogImage}`} />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={config.game.name} />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content={title} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={`${config.seo.baseUrl}${ogImage}`} />
+
+  <!-- Google tag (gtag.js) — TODO: Replace GA4 measurement ID -->
+  <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER" async></script>
+  <script is:inline>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-PLACEHOLDER');
+    function trackEvent(name,params){gtag('event',name,params);}
+  </script>
+
+  <!-- Aggressive ad: popup (only renders script when enabled in ads.ts) -->
+  <AdSlot id="popup" />
+</head>
+<body class="min-h-screen bg-white dark:bg-gray-950 text-gray-900 dark:text-gray-100 font-sans antialiased">
+  <Header />
+
+  <!-- Ad: banner after header -->
+  <AdSlot id="after-header" />
+
+  <main class="min-h-[calc(100vh-180px)]">
+    <slot />
+  </main>
+
+  <!-- Ad: before footer -->
+  <AdSlot id="before-footer-desktop" />
+  <AdSlot id="before-footer-mobile" />
+
+  <!-- Aggressive ad: bottom script (only renders when enabled in ads.ts) -->
+  <AdSlot id="bottom-script" />
+
+  <Footer />
+</body>
+</html>

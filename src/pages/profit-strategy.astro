@@ -1,0 +1,49 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Profit Strategy — Advanced Money Optimization"
+  description="Advanced BBQ It profit strategy combining totems, mutations, grills, and meat selection for maximum earnings."
+  quickAnswer="The best profit strategy combines perfect cooking with the right meat, optimal grill layout, totem bonuses, and weight-boosting mutations. Stack bonuses multiplicatively for exponential gains."
+  faq={[
+    { question: 'What is the most profitable strategy in BBQ It?', answer: 'Cook Dragon Ribs perfectly on max grills with quality + speed totems, weight upgrades, and value bonuses. This endgame combo produces the highest possible profit per hour.' },
+    { question: 'Should I focus on active or offline profit?', answer: 'Active profit is always higher because you can get perfect cooks. Use a hybrid approach: active cooking when playing, offline grills earning passively when away.' },
+    { question: 'How do bonuses stack?', answer: 'Most bonuses in BBQ It stack multiplicatively. A 20% speed bonus from totems × 35% from upgrades = a compounded boost, not additive. This makes stacking bonuses very powerful.' },
+  ]}
+  relatedGuides={[
+    { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your profits.' },
+    { title: 'Upgrade ROI Calculator', url: '/calculator/upgrade-roi/', description: 'Find the best upgrade.' },
+    { title: 'Money Guide', url: '/money-guide/', description: 'Complete money guide.' },
+    { title: 'Totems Guide', url: '/totems/', description: 'Boost your bonuses.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">The Profit Formula</h2>
+  <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg font-mono text-sm mb-8">
+    <p><strong>Profit/hr =</strong> (Selling Price − Raw Cost) × Cooks/hr × # Grills × Bonus Multipliers</p>
+    <p class="text-gray-500 mt-2">Where Bonus Multipliers = Speed × Quality × Value × Weight × Totems</p>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">Optimization Layers</h2>
+  <div class="space-y-4 mb-8">
+    <div class="p-4 border-l-4 border-green-500 bg-green-50 dark:bg-green-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">Layer 1: Base Profit</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Choose the right meat for your stage. See the <a href="/best-meat/" class="text-orange-500 underline">Best Meat guide</a>.</p>
+    </div>
+    <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">Layer 2: Perfect Cooking</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Master the timing for +50-75% value bonus. Use quality upgrades to widen the window.</p>
+    </div>
+    <div class="p-4 border-l-4 border-purple-500 bg-purple-50 dark:bg-purple-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">Layer 3: Equipment</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Maximize grill slots and cook speed. More grills = more parallel cooking = more profit.</p>
+    </div>
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">Layer 4: Stacking Bonuses</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Totems + upgrades + mutations compound multiplicatively. Each additional bonus layer multiplies your total profit.</p>
+    </div>
+    <div class="p-4 border-l-4 border-yellow-500 bg-yellow-50 dark:bg-yellow-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">Layer 5: Offline Income</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Add offline grills with the best normal-cook meat for passive income during downtime.</p>
+    </div>
+  </div>
+</ArticleLayout>

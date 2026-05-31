@@ -1,0 +1,125 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import FAQItem from '@/components/FAQItem.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { generateBreadcrumbSchema, generateFAQSchema, getMeats } from '@/lib/data';
+
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Perfect Cook Guide', url: '/perfect-cook/' },
+]);
+
+const faqItems = [
+  { question: 'How do I get perfect cooks in BBQ It?', answer: 'Watch the cook indicator on each meat. During the cooking process, there is a brief "perfect" window where the meat glows or changes color. Remove it during this window for a perfect cook. The timing is different for each meat type.' },
+  { question: 'What does a perfect cook give me?', answer: 'Perfect cooks sell for roughly 50-75% more than normal cooks. For premium meats like Ribeye and Dragon Ribs, the extra profit from perfect cooks is massive.' },
+  { question: 'How do I avoid burning meat?', answer: 'Never walk away from a cooking meat without a timer. Watch for the color change from golden to dark — that means it is about to burn. If in doubt, remove early. Raw meat sells for more than burnt meat.' },
+  { question: 'Does cook speed affect the perfect window?', answer: 'Cook speed upgrades reduce the total cook time but the perfect window also becomes shorter proportionally. Higher cook speed means you need faster reflexes.' },
+  { question: 'What is the best meat to practice perfect cooking?', answer: 'Start with Hot Dogs — they cook in 8 seconds so you get many attempts quickly. Once you are consistent, move to Chicken, then Salmon.' },
+];
+const faqSchema = generateFAQSchema(faqItems);
+---
+<BaseLayout title="BBQ It Perfect Cook Guide — How to Get Perfect Cooks Every Time" description="Master perfect cooking in BBQ It. Learn the timing, tricks, and strategies to get perfect cooks for maximum profit.">
+  <JsonLd schema={[breadcrumbSchema, faqSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Perfect Cook Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Perfect cooks are the single biggest profit multiplier in BBQ It. This guide covers how perfect cooking works, timing for each meat, and tips to get perfect cooks consistently.</p>
+
+    <!-- Quick Summary -->
+    <div class="mb-8 p-4 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 rounded-lg">
+      <p class="font-medium text-orange-800 dark:text-orange-200">
+        🎯 <strong>Quick Answer:</strong> Perfect cooks sell for ~50-75% more than normal cooks. Watch the color indicator and remove meat during the golden flash window. Practice with cheap meats first, then upgrade to premium cuts.
+      </p>
+    </div>
+
+    <!-- How Perfect Cooking Works -->
+    <h2 class="text-2xl font-bold mb-4">How Perfect Cooking Works</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">Every meat in BBQ It goes through three cooking stages:</p>
+    <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+      <li><strong>Raw</strong> — Meat just placed on the grill. Not cooked yet.</li>
+      <li><strong>Cooked (Normal)</strong> — Meat is done. Safe to sell for standard value.</li>
+      <li><strong>Perfect</strong> — A brief window after "cooked" where the meat glows golden. This is the perfect cook timing.</li>
+      <li><strong>Burnt</strong> — Left on too long. Sells for less than the raw cost.</li>
+    </ol>
+
+    <!-- Cook Times Table -->
+    <h2 class="text-2xl font-bold mb-4">Cook Times & Perfect Windows</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-900">
+          <tr>
+            <th class="px-4 py-2 text-left font-bold">Meat</th>
+            <th class="px-4 py-2 text-left font-bold">Tier</th>
+            <th class="px-4 py-2 text-left font-bold">Cook Time</th>
+            <th class="px-4 py-2 text-left font-bold">Normal Value</th>
+            <th class="px-4 py-2 text-left font-bold">Perfect Value</th>
+            <th class="px-4 py-2 text-left font-bold">Profit Boost</th>
+          </tr>
+        </thead>
+        <tbody>
+          {meats.map(meat => {
+            const boost = ((meat.perfectValue - meat.cookValue) / meat.cookValue * 100).toFixed(0);
+            return (
+              <tr class="border-t border-gray-100 dark:border-gray-800">
+                <td class="px-4 py-2 font-medium">{meat.name}</td>
+                <td class="px-4 py-2">
+                  <span class={`px-2 py-0.5 rounded text-xs font-bold ${
+                    meat.tier === 'S' ? 'bg-yellow-100 dark:bg-yellow-900 text-yellow-700 dark:text-yellow-300' :
+                    meat.tier === 'A' ? 'bg-purple-100 dark:bg-purple-900 text-purple-700 dark:text-purple-300' :
+                    meat.tier === 'B' ? 'bg-blue-100 dark:bg-blue-900 text-blue-700 dark:text-blue-300' :
+                    'bg-gray-100 dark:bg-gray-800 text-gray-600 dark:text-gray-400'
+                  }`}>{meat.tier}</span>
+                </td>
+                <td class="px-4 py-2">{meat.cookTime}s</td>
+                <td class="px-4 py-2">{meat.cookValue}</td>
+                <td class="px-4 py-2 text-green-600 dark:text-green-400 font-bold">{meat.perfectValue}</td>
+                <td class="px-4 py-2 text-orange-500 font-bold">+{boost}%</td>
+              </tr>
+            );
+          })}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Multi-Grill Tips -->
+    <h2 class="text-2xl font-bold mb-4">Multi-Grill Timing Tips</h2>
+    <div class="space-y-4 mb-8">
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">Stagger your grills</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Don't put meat on all grills at the same time. Start them 3-5 seconds apart so you have time to handle each perfect window individually.</p>
+      </div>
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">Use similar cook times</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Cook the same meat type on all grills to sync up the timing windows. Mixing different meats makes it much harder to hit perfect cooks consistently.</p>
+      </div>
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">Invest in quality upgrades</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">The Seasoned Chef, Master Chef, and BBQ Legend upgrades widen the perfect cook window, making it easier to hit consistently.</p>
+      </div>
+    </div>
+
+    <!-- Offline Warning -->
+    <div class="p-4 bg-red-50 dark:bg-red-950/30 border border-red-200 dark:border-red-800 rounded-lg mb-8">
+      <p class="text-sm text-red-800 dark:text-red-200">
+        ⚠️ <strong>Offline Cooking Warning:</strong> Offline grills do NOT produce perfect cooks. They always cook at normal quality. For maximum profit from expensive meats, cook actively.
+      </p>
+    </div>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">Perfect Cook FAQ</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => <FAQItem question={item.question} answer={item.answer} />)}
+      </div>
+    </section>
+
+    <RelatedGuides links={[
+      { title: 'Perfect Temperature Guide', url: '/perfect-temperature/', description: 'Detailed temperature mechanics.' },
+      { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked by profitability.' },
+      { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your perfect cook profits.' },
+      { title: 'Beginner Guide', url: '/beginner-guide/', description: 'Getting started with BBQ It.' },
+    ]} />
+  </article>
+</BaseLayout>

@@ -1,0 +1,82 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+
+const faqItems = [
+  { question: 'How do I start BBQ It?', answer: 'Join the game on Roblox, and you will start with a basic grill and wooden table. Buy raw meat from the shop, place it on the grill, wait for it to cook, then serve it to customers for cash.' },
+  { question: 'What should I buy first in BBQ It?', answer: 'Your first purchase should be a Standard Grill (500 cash) for an extra slot, followed by a Metal Table (800 cash) to serve two customers at once. See our What to Buy First guide for a full priority list.' },
+  { question: 'How do I get perfect cooks?', answer: 'Watch the cooking indicator on each meat. Remove it during the "perfect" window — usually a brief moment right before the meat turns from golden to burnt. Practice with cheaper meats first.' },
+  { question: 'How do I earn money fast in BBQ It?', answer: 'Focus on perfect cooks for higher sell values, upgrade your table for better customer offers, and eventually invest in offline grills for passive income. Our Money Guide has detailed strategies.' },
+  { question: 'Can I play BBQ It on mobile?', answer: 'Yes, BBQ It works on all Roblox platforms including mobile (iOS and Android). The controls are slightly different but all features are available.' },
+];
+---
+<ArticleLayout
+  title="BBQ It Beginner Guide — How to Play"
+  description="Complete beginner guide for BBQ It on Roblox. Learn the basics, controls, first steps, and early game tips to get started fast."
+  quickAnswer="BBQ It is easy to pick up but rewards skill and strategy. This guide covers the basics: buying meat, cooking, serving customers, and making your first upgrades."
+  faq={faqItems}
+  relatedGuides={[
+    { title: 'Codes', url: '/codes/', description: 'Get free cash with working codes.' },
+    { title: 'What to Buy First', url: '/what-to-buy-first/', description: 'Best early purchases ranked.' },
+    { title: 'Money Guide', url: '/money-guide/', description: 'How to earn money fast.' },
+    { title: 'Perfect Cook Guide', url: '/perfect-cook/', description: 'Master the cooking timing.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Getting Started</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">When you first join BBQ It, you have a <strong>Basic Grill</strong> (2 slots) and a <strong>Wooden Table</strong> (1 customer). Your goal is to cook meat and sell it for cash, then reinvest in better equipment.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Controls</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+      <h3 class="font-bold mb-2">🖥️ PC Controls</h3>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <li><strong>Click</strong> — Pick up / place meat</li>
+        <li><strong>Click grill</strong> — Put meat on grill</li>
+        <li><strong>Click table</strong> — Serve cooked meat</li>
+        <li><strong>E</strong> — Interact with shop / upgrades</li>
+      </ul>
+    </div>
+    <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg">
+      <h3 class="font-bold mb-2">📱 Mobile Controls</h3>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <li><strong>Tap</strong> — Pick up / place meat</li>
+        <li><strong>Tap grill</strong> — Put meat on grill</li>
+        <li><strong>Tap table</strong> — Serve cooked meat</li>
+        <li><strong>Tap buttons</strong> — Shop and upgrades</li>
+      </ul>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">First Steps</h2>
+  <ol class="list-decimal list-inside space-y-3 text-gray-600 dark:text-gray-400 mb-8">
+    <li><strong>Buy raw meat</strong> from the shop. Start with Hot Dogs (cheap and fast).</li>
+    <li><strong>Place meat on grill</strong> by clicking/tapping the grill with meat in hand.</li>
+    <li><strong>Wait for the cook timer</strong>. Watch for the golden color change.</li>
+    <li><strong>Remove at the right time</strong>. Too early = raw, just right = cooked/perfect, too late = burnt.</li>
+    <li><strong>Serve to customers</strong> at your table for cash.</li>
+    <li><strong>Repeat and save up</strong> for your first upgrades.</li>
+  </ol>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Early Game Tips</h2>
+  <div class="space-y-4 mb-8">
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">1. Practice timing with Hot Dogs</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Hot Dogs cook fast (8 seconds) and cost almost nothing. Use them to learn the perfect cook timing before moving to expensive meats.</p>
+    </div>
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">2. Save for a Standard Grill first</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">An extra grill slot means more meat cooking at once. At 500 cash, the Standard Grill pays for itself quickly.</p>
+    </div>
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">3. Always aim for perfect cooks</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Perfect cooks sell for roughly double the normal value. The timing takes practice but the profit difference is massive over time.</p>
+    </div>
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">4. Don't burn meat</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Burnt meat sells for less than the raw cost. If you're unsure about timing, remove the meat early (raw) rather than letting it burn.</p>
+    </div>
+    <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+      <h3 class="font-bold mb-1">5. Use codes for free cash</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Check our <a href="/codes/" class="text-orange-500 underline">Codes page</a> for free cash codes that give you a head start on upgrades.</p>
+    </div>
+  </div>
+</ArticleLayout>

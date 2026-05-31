@@ -1,0 +1,34 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Auto Sell — How It Works and When to Use It"
+  description="Learn how Auto Sell works in BBQ It. Setup guide, configuration tips, and when to enable auto selling for maximum efficiency."
+  quickAnswer="Auto Sell automatically sells cooked meats at the best available offer. It costs 4,000 cash and is essential for AFK play, offline efficiency, and multi-grill management."
+  faq={[
+    { question: 'Is Auto Sell worth it?', answer: 'Absolutely. At 4,000 cash, Auto Sell is one of the best mid-game purchases. It eliminates the need to manually accept offers, letting you focus entirely on cooking.' },
+    { question: 'Does Auto Sell accept bad offers?', answer: 'Auto Sell accepts the best available offer at the time. With a good table (Premium or Golden), even the worst offers are decent thanks to the table value bonus.' },
+    { question: 'Can I use Auto Sell with offline grills?', answer: 'Yes. Auto Sell works with offline grills to ensure your passive income is automatically collected when you return.' },
+  ]}
+  relatedGuides={[
+    { title: 'Money Guide', url: '/money-guide/', description: 'Complete money-making strategies.' },
+    { title: 'Customer Offers', url: '/customer-offers/', description: 'How customer offers work.' },
+    { title: 'Upgrades Guide', url: '/upgrades/', description: 'All upgrades ranked.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Auto Sell Mechanics</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">Once purchased for 4,000 cash, Auto Sell runs in the background. When a cooked meat is placed on your table and a customer makes an offer, Auto Sell accepts the best available offer automatically.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">When to Buy Auto Sell</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• <strong>Buy after Metal Table + a couple grills.</strong> You need the cooking volume first.</li>
+    <li>• <strong>Essential before offline grills.</strong> Auto Sell ensures your offline earnings are collected efficiently.</li>
+    <li>• <strong>Frees up your attention.</strong> Without Auto Sell, managing offers while cooking on 4+ grills is very stressful.</li>
+  </ul>
+
+  <div class="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg mb-8">
+    <p class="text-sm text-blue-800 dark:text-blue-200">
+      💡 <strong>Tip:</strong> Pair Auto Sell with a Premium or Golden Table for the best results. The table's value bonus applies to all auto-accepted offers.
+    </p>
+  </div>
+</ArticleLayout>

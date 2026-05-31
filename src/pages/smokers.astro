@@ -1,0 +1,70 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+---
+<ArticleLayout
+  title="BBQ It Smokers Guide — How Smokers Work"
+  description="Learn how smokers work in BBQ It. Smoker mechanics, comparison with grills, and when to invest in smokers."
+  quickAnswer="Smokers cook meat slowly but add a quality bonus. They work offline, making them a good complement to regular grills for passive income."
+  faq={[
+    { question: 'Are smokers worth it in BBQ It?', answer: 'Smokers are a mid-to-late game investment. They cook slowly but work offline and add quality bonuses to meats. They are worth buying after you have a solid active grill setup.' },
+    { question: 'Can smokers produce perfect cooks?', answer: 'Smokers do not produce perfect cooks in the traditional sense. They apply a quality bonus that increases the sell value above normal cook value.' },
+    { question: 'Should I buy a smoker or an offline grill first?', answer: 'Get a basic offline grill first for pure passive income. Smokers are better as a secondary investment when you want to maximize the value of premium meats.' },
+  ]}
+  relatedGuides={[
+    { title: 'Grills Guide', url: '/grills/', description: 'All grills compared.' },
+    { title: 'Offline Grills', url: '/offline-grills/', description: 'How offline grills work.' },
+    { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades ranked.' },
+  ]}
+>
+  <DataDisclaimer />
+
+  <h2 class="text-2xl font-bold mb-4">How Smokers Work</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">Smokers are a special type of cooking equipment that cook meat slowly but apply a quality bonus. Unlike regular grills, smokers work offline and produce higher-quality results than normal offline cooks.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Smoker vs Grill Comparison</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-gray-50 dark:bg-gray-900">
+        <tr>
+          <th class="px-4 py-2 text-left font-bold">Feature</th>
+          <th class="px-4 py-2 text-left font-bold">Active Grill</th>
+          <th class="px-4 py-2 text-left font-bold">Offline Grill</th>
+          <th class="px-4 py-2 text-left font-bold">Smoker</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="border-t border-gray-100 dark:border-gray-800">
+          <td class="px-4 py-2 font-medium">Perfect Cooks</td>
+          <td class="px-4 py-2 text-green-600">✅ Yes</td>
+          <td class="px-4 py-2 text-red-500">❌ No</td>
+          <td class="px-4 py-2 text-yellow-600">⚠️ Quality bonus</td>
+        </tr>
+        <tr class="border-t border-gray-100 dark:border-gray-800">
+          <td class="px-4 py-2 font-medium">Works Offline</td>
+          <td class="px-4 py-2 text-red-500">❌ No</td>
+          <td class="px-4 py-2 text-green-600">✅ Yes</td>
+          <td class="px-4 py-2 text-green-600">✅ Yes</td>
+        </tr>
+        <tr class="border-t border-gray-100 dark:border-gray-800">
+          <td class="px-4 py-2 font-medium">Cook Speed</td>
+          <td class="px-4 py-2">100-120%</td>
+          <td class="px-4 py-2">80-100%</td>
+          <td class="px-4 py-2">60-70%</td>
+        </tr>
+        <tr class="border-t border-gray-100 dark:border-gray-800">
+          <td class="px-4 py-2 font-medium">Best For</td>
+          <td class="px-4 py-2">Active profit</td>
+          <td class="px-4 py-2">Passive income</td>
+          <td class="px-4 py-2">Premium meat value</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg mb-8">
+    <p class="text-sm text-blue-800 dark:text-blue-200">
+      💡 <strong>Tip:</strong> Smokers work best with premium meats like Ribeye and Dragon Ribs. The quality bonus percentage scales with meat value, so expensive meats benefit more.
+    </p>
+  </div>
+</ArticleLayout>

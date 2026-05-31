@@ -1,0 +1,136 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import FAQItem from '@/components/FAQItem.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getMeats, getMeatBySlug, generateBreadcrumbSchema, generateFAQSchema, type Meat } from '@/lib/data';
+
+export function getStaticPaths() {
+  const meats = getMeats();
+  return meats.map(meat => ({
+    params: { slug: meat.slug },
+    props: { meat },
+  }));
+}
+
+interface Props {
+  meat: Meat;
+}
+
+const { meat } = Astro.props;
+const profit = meat.perfectValue - meat.rawCost;
+const profitNormal = meat.cookValue - meat.rawCost;
+const profitMargin = ((profit / meat.rawCost) * 100).toFixed(0);
+const profitPerMinute = (profit / (meat.cookTime / 60)).toFixed(1);
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Meat Tier List', url: '/meat-tier-list/' },
+  { name: meat.name, url: `/meats/${meat.slug}/` },
+]);
+
+const faqItems = [
+  { question: `How much does ${meat.name} sell for in BBQ It?`, answer: `${meat.name} sells for ${meat.cookValue} (normal cook) or ${meat.perfectValue} (perfect cook). The raw cost is ${meat.rawCost}, so the profit per perfect cook is ${profit} cash.` },
+  { question: `Is ${meat.name} worth cooking?`, answer: `${meat.name} is ${meat.tier}-tier. ${meat.tier === 'S' || meat.tier === 'A' ? 'Yes, it is one of the best meats in the game with excellent profit potential.' : meat.tier === 'B' ? 'Yes, it is a solid mid-to-late game meat with good profit margins.' : 'It is a decent option for its tier, but there are better meats available as you progress.'}` },
+  { question: `How long does ${meat.name} take to cook?`, answer: `${meat.name} takes approximately ${meat.cookTime} seconds to cook. The perfect cook window is near the end of the cook time — watch for the golden glow indicator.` },
+];
+
+const faqSchema = generateFAQSchema(faqItems);
+---
+<BaseLayout title={`BBQ It ${meat.name} Guide — Stats, Cooking Tips & Profit`} description={`Complete ${meat.name} guide for BBQ It. Raw cost ${meat.rawCost}, cook value ${meat.cookValue}, perfect value ${meat.perfectValue}. Profit analysis and cooking tips.`}>
+  <JsonLd schema={[breadcrumbSchema, faqSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It {meat.name} Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">{meat.description}</p>
+
+    <DataDisclaimer />
+
+    <!-- Stats Table -->
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <tbody>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900 w-1/3">Tier</td>
+            <td class="px-4 py-2"><span class="font-bold">{meat.tier} Tier</span></td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Raw Cost</td>
+            <td class="px-4 py-2">{meat.rawCost} cash</td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Normal Cook Value</td>
+            <td class="px-4 py-2">{meat.cookValue}</td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Perfect Cook Value</td>
+            <td class="px-4 py-2 text-green-600 dark:text-green-400 font-bold">{meat.perfectValue}</td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Burnt Value</td>
+            <td class="px-4 py-2 text-red-500">{meat.burnValue}</td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Cook Time</td>
+            <td class="px-4 py-2">{meat.cookTime}s</td>
+          </tr>
+          <tr class="border-b border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Base Weight</td>
+            <td class="px-4 py-2">{meat.weight}</td>
+          </tr>
+          <tr>
+            <td class="px-4 py-2 font-medium bg-gray-50 dark:bg-gray-900">Profit (Perfect)</td>
+            <td class="px-4 py-2 text-orange-500 font-bold">+{profit} ({profitMargin}% margin)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Profit Analysis -->
+    <h2 class="text-2xl font-bold mb-4">Profit Analysis</h2>
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+      <div class="p-4 bg-green-50 dark:bg-green-950/30 rounded-lg text-center">
+        <div class="text-2xl font-bold text-green-600">+{profit}</div>
+        <div class="text-xs text-gray-500">Profit (Perfect)</div>
+      </div>
+      <div class="p-4 bg-blue-50 dark:bg-blue-950/30 rounded-lg text-center">
+        <div class="text-2xl font-bold text-blue-600">+{profitNormal}</div>
+        <div class="text-xs text-gray-500">Profit (Normal)</div>
+      </div>
+      <div class="p-4 bg-orange-50 dark:bg-orange-950/30 rounded-lg text-center">
+        <div class="text-2xl font-bold text-orange-500">{profitPerMinute}/min</div>
+        <div class="text-xs text-gray-500">Profit/Min (Perfect)</div>
+      </div>
+      <div class="p-4 bg-red-50 dark:bg-red-950/30 rounded-lg text-center">
+        <div class="text-2xl font-bold text-red-500">-{meat.rawCost - meat.burnValue}</div>
+        <div class="text-xs text-gray-500">Loss if Burnt</div>
+      </div>
+    </div>
+
+    <!-- Cooking Tips -->
+    <h2 class="text-2xl font-bold mb-4">Cooking Tips</h2>
+    <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+      <li>• <strong>Watch the timer</strong> — {meat.name} takes {meat.cookTime}s to cook. The perfect window is near the end.</li>
+      <li>• <strong>Perfect cook bonus:</strong> +{meat.perfectValue - meat.cookValue} extra value over normal cook.</li>
+      <li>• <strong>Burn penalty:</strong> -{meat.rawCost - meat.burnValue} loss compared to raw cost. Avoid burns!</li>
+      {meat.tags.includes('fish') && <li>• <strong>Fish caution:</strong> Fish meats like {meat.name} tend to have a narrower perfect cook window.</li>}
+      {meat.tags.includes('fast') && <li>• <strong>Fast cook:</strong> {meat.name} cooks quickly, great for practice and high throughput.</li>}
+    </ul>
+
+    <!-- FAQ -->
+    <section class="mb-12">
+      <h2 class="text-2xl font-bold mb-6">{meat.name} FAQ</h2>
+      <div class="space-y-3">
+        {faqItems.map(item => <FAQItem question={item.question} answer={item.answer} />)}
+      </div>
+    </section>
+
+    <RelatedGuides links={[
+      { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked by tier.' },
+      { title: 'Perfect Cook Guide', url: '/perfect-cook/', description: 'How to get perfect cooks.' },
+      { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your profits.' },
+      { title: 'Best Meat', url: '/best-meat/', description: 'Best meat for each stage.' },
+    ]} />
+  </article>
+</BaseLayout>

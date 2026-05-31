@@ -1,0 +1,56 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Mutations Guide — How Mutations Work"
+  description="Learn how meat mutations work in BBQ It. Mutation types, how to trigger them, rare mutations, and profit impact."
+  quickAnswer="Mutations are random modifiers that appear on meats, changing their weight, value, or other properties. Some mutations are rare and very valuable, making mutated meats worth significantly more."
+  faq={[
+    { question: 'What are mutations in BBQ It?', answer: 'Mutations are random modifications that can appear on raw or cooking meats. They alter properties like weight, cook speed, or sell value, sometimes dramatically increasing a meat\'s worth.' },
+    { question: 'How do I trigger mutations?', answer: 'Mutations occur randomly during the cooking process. Some upgrades and totems increase the mutation chance. Certain game events also boost mutation rates temporarily.' },
+    { question: 'Are mutations always good?', answer: 'Most mutations are beneficial, but some can be neutral or mildly negative. The most valuable mutations significantly increase weight or value, making them highly sought after.' },
+  ]}
+  relatedGuides={[
+    { title: 'Totems Guide', url: '/totems/', description: 'Boost mutation chances with totems.' },
+    { title: 'Heaviest Meat', url: '/heaviest-meat/', description: 'Weight mechanics explained.' },
+    { title: 'Meat Weight Calculator', url: '/calculator/meat-weight/', description: 'Calculate mutated meat value.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Mutation Types</h2>
+  <div class="space-y-3 mb-8">
+    <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">
+      <div>
+        <span class="font-bold">Weight Boost</span>
+        <span class="text-sm text-gray-500 ml-2">— Increases meat weight by a percentage</span>
+      </div>
+      <span class="text-green-600 text-sm font-bold">Valuable</span>
+    </div>
+    <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">
+      <div>
+        <span class="font-bold">Value Surge</span>
+        <span class="text-sm text-gray-500 ml-2">— Directly increases the sell value</span>
+      </div>
+      <span class="text-green-600 text-sm font-bold">Very Valuable</span>
+    </div>
+    <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">
+      <div>
+        <span class="font-bold">Quick Cook</span>
+        <span class="text-sm text-gray-500 ml-2">— Reduces the cook time for this meat</span>
+      </div>
+      <span class="text-blue-600 text-sm font-bold">Useful</span>
+    </div>
+    <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">
+      <div>
+        <span class="font-bold">Golden Touch</span>
+        <span class="text-sm text-gray-500 ml-2">— Rare mutation with massive value increase</span>
+      </div>
+      <span class="text-yellow-600 text-sm font-bold">★ Rare</span>
+    </div>
+  </div>
+
+  <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800 rounded-lg">
+    <p class="text-sm text-amber-800 dark:text-amber-200">
+      ⚠️ <strong>Note:</strong> Mutation types, rates, and effects may change with game updates. The above list represents commonly observed mutations.
+    </p>
+  </div>
+</ArticleLayout>

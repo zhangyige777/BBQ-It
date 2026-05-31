@@ -1,0 +1,58 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import { getMeats } from '@/lib/data';
+const meats = [...getMeats()].sort((a, b) => b.weight - a.weight);
+---
+<ArticleLayout
+  title="BBQ It Heaviest Meat — Weight Guide"
+  description="Find the heaviest meat in BBQ It and learn how weight affects sell value. Weight rankings, mechanics, and tips for getting heavy meats."
+  quickAnswer="Meat weight in BBQ It affects sell value — heavier meats sell for more. Dragon Ribs has the highest base weight at 4.0, followed by Ribeye at 2.8. Weight can be boosted with upgrades and mutations."
+  faq={[
+    { question: 'What is the heaviest meat in BBQ It?', answer: 'Dragon Ribs has the highest base weight at 4.0 units. This contributes to its very high sell value, especially with weight-boosting upgrades.' },
+    { question: 'Does weight affect sell price?', answer: 'Yes, heavier meats sell for more. The sell value scales with weight, so getting heavier variants of any meat is always better.' },
+    { question: 'Can I increase meat weight?', answer: 'Yes. The Heavy Hitter upgrade gives +20% base weight. Some mutations also increase weight. Combining both can produce very heavy, very valuable meats.' },
+  ]}
+  relatedGuides={[
+    { title: 'Meat Weight Calculator', url: '/calculator/meat-weight/', description: 'Calculate value based on weight.' },
+    { title: 'Meat Values', url: '/meat-values/', description: 'Complete value table.' },
+    { title: 'Mutations Guide', url: '/mutations/', description: 'Weight-boosting mutations.' },
+  ]}
+>
+  <DataDisclaimer />
+
+  <h2 class="text-2xl font-bold mb-4">Weight Rankings</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-gray-50 dark:bg-gray-900">
+        <tr>
+          <th class="px-4 py-2 text-left font-bold">Rank</th>
+          <th class="px-4 py-2 text-left font-bold">Meat</th>
+          <th class="px-4 py-2 text-right font-bold">Base Weight</th>
+          <th class="px-4 py-2 text-right font-bold">Tier</th>
+        </tr>
+      </thead>
+      <tbody>
+        {meats.map((meat, i) => (
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-bold">#{i + 1}</td>
+            <td class="px-4 py-2 font-medium">
+              <a href={`/meats/${meat.slug}/`} class="hover:text-orange-500 transition-colors">{meat.name}</a>
+            </td>
+            <td class="px-4 py-2 text-right font-bold">{meat.weight}</td>
+            <td class="px-4 py-2 text-right">{meat.tier}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4">How Weight Works</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• Each meat type has a <strong>base weight</strong> that determines its baseline sell value.</li>
+    <li>• Random variation means each individual meat can be slightly heavier or lighter than the base.</li>
+    <li>• <strong>Heavy Hitter upgrade</strong> (+20% weight) applies to all meats across all grills.</li>
+    <li>• <strong>Weight mutations</strong> can dramatically increase individual meat weight.</li>
+    <li>• Heavier meats with perfect cooks are the most valuable items in the game.</li>
+  </ul>
+</ArticleLayout>

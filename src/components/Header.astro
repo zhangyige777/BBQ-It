@@ -1,0 +1,20 @@
+---
+import { getGameConfig } from '@/lib/data';
+const config = getGameConfig();
+---
+<header class="border-b border-gray-200 dark:border-gray-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm sticky top-0 z-50">
+  <div class="max-w-6xl mx-auto px-4 h-14 flex items-center justify-between">
+    <a href="/" class="font-bold text-lg tracking-tight hover:text-orange-600 transition-colors">
+      <span class="text-orange-500">🔥</span> {config.game.name}
+      <span class="text-xs text-gray-400 ml-2 font-normal hidden sm:inline">Guide & Tools</span>
+    </a>
+    <nav class="flex items-center gap-1 text-sm font-medium overflow-x-auto max-w-[65vw]">
+      <a href="/codes/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap">Codes</a>
+      <a href="/meat-tier-list/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap hidden sm:block">Tier List</a>
+      <a href="/perfect-cook/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap hidden sm:block">Perfect Cook</a>
+      <a href="/calculator/meat-profit/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap">Calculator</a>
+      <a href="/beginner-guide/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap hidden sm:block">Guide</a>
+      <a href="/wiki/" class="px-3 py-2 rounded-md hover:bg-gray-100 dark:hover:bg-gray-800 whitespace-nowrap">Wiki</a>
+    </nav>
+  </div>
+</header>

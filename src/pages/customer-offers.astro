@@ -1,0 +1,29 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Customer Offers — How to Get the Best Deals"
+  description="Learn how customer offers work in BBQ It. How to evaluate offers, when to accept or decline, and tips for maximizing your sell price."
+  quickAnswer="Customers offer different prices for your cooked meats. Higher-tier tables attract better offers. Accept high offers quickly and decline low ones — or use Auto Sell to handle it for you."
+  faq={[
+    { question: 'How do customer offers work?', answer: 'When cooked meat is placed on a table, customers appear and make offers. The offer amount varies — some are above average value, some below. You choose which offers to accept.' },
+    { question: 'Should I accept all offers?', answer: 'No. Low offers can eat into your profit. Wait for better offers or decline quickly to make room for new customers with better deals.' },
+    { question: 'How do I get better customer offers?', answer: 'Upgrade your table. Premium and Golden tables offer a built-in value boost (+10% and +20%). Higher-tier tables also serve more customers, increasing the chance of seeing a good offer.' },
+  ]}
+  relatedGuides={[
+    { title: 'Money Guide', url: '/money-guide/', description: 'Complete money-making strategies.' },
+    { title: 'Auto Sell', url: '/auto-sell/', description: 'Automate your selling.' },
+    { title: 'Upgrades Guide', url: '/upgrades/', description: 'Table upgrades and more.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">How Customer Offers Work</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">When you place cooked meat on a serving table, customers appear one by one and make purchase offers. Each offer is a random price within a range based on the meat's value and your table tier.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Offer Evaluation Tips</h2>
+  <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li>• <strong>Know your meat values</strong> — Check our <a href="/meat-values/" class="text-orange-500 underline">Meat Values page</a> so you recognize when an offer is good or bad.</li>
+    <li>• <strong>Decline fast</strong> — Don't hold up your table waiting for a great offer. A decent offer now is better than waiting 30 seconds for a slightly better one.</li>
+    <li>• <strong>Use Auto Sell</strong> — Once you buy the Auto Sell upgrade, you can set a threshold and let the system handle offers automatically.</li>
+    <li>• <strong>Premium tables boost everything</strong> — The +10% and +20% offer value bonuses from upgraded tables apply to all offers, making even "bad" offers decent.</li>
+  </ul>
+</ArticleLayout>

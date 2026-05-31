@@ -1,0 +1,72 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import SummaryTable from '@/components/SummaryTable.astro';
+import FAQItem from '@/components/FAQItem.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import AdSlot from '@/components/AdSlot.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import { generateBreadcrumbSchema, generateFAQSchema } from '@/lib/data';
+
+interface Props {
+  title: string;
+  description: string;
+  quickAnswer: string;
+  summaryRows?: { label: string; value: string }[];
+  summaryCaption?: string;
+  faq?: { question: string; answer: string }[];
+  relatedGuides?: { title: string; url: string; description: string }[];
+  canonical?: string;
+  ogImage?: string;
+}
+
+const { title, description, quickAnswer, summaryRows, summaryCaption, faq, relatedGuides, canonical, ogImage } = Astro.props;
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: title, url: canonical || '/' },
+]);
+
+const schemas: object[] = [breadcrumbSchema];
+if (faq && faq.length >= 3) {
+  schemas.push(generateFAQSchema(faq));
+}
+---
+<BaseLayout title={title} description={description} canonical={canonical} ogImage={ogImage}>
+  <JsonLd schema={schemas} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <!-- H1 -->
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">{title}</h1>
+
+    <!-- Quick Answer -->
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">{quickAnswer}</p>
+
+    <!-- Summary Table -->
+    {summaryRows && <SummaryTable rows={summaryRows} caption={summaryCaption} />}
+
+    <!-- Custom content via slot -->
+    <slot />
+
+    <!-- Mid-content ad -->
+    <div class="my-8">
+      <AdSlot id="mid-content" />
+    </div>
+
+    <!-- FAQ -->
+    {faq && faq.length > 0 && (
+      <section class="mt-12">
+        <h2 class="text-2xl font-bold mb-6">Frequently Asked Questions</h2>
+        <div class="space-y-3">
+          {faq.map(item => <FAQItem question={item.question} answer={item.answer} />)}
+        </div>
+      </section>
+    )}
+
+    <!-- Related Guides -->
+    {relatedGuides && relatedGuides.length > 0 && (
+      <div class="mt-12">
+        <RelatedGuides links={relatedGuides} />
+      </div>
+    )}
+  </article>
+</BaseLayout>

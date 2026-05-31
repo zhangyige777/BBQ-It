@@ -1,0 +1,57 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import { generateBreadcrumbSchema } from '@/lib/data';
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Wiki', url: '/wiki/' },
+]);
+---
+<ArticleLayout
+  title="BBQ It Wiki — Complete Game Guide"
+  description="Complete BBQ It wiki covering game mechanics, meats, grills, upgrades, totems, mutations, and progression."
+  quickAnswer="BBQ It is a cooking tycoon game on Roblox where players grill meats, serve customers, upgrade equipment, and build a BBQ empire. This wiki covers every major game system."
+  faq={[
+    { question: 'What type of game is BBQ It?', answer: 'BBQ It is a cooking tycoon game on the Roblox platform. Players cook meats on grills, serve customers at tables, earn cash, and reinvest in better equipment and upgrades.' },
+    { question: 'Is BBQ It free to play?', answer: 'Yes, BBQ It is free to play on Roblox. There are optional in-game purchases, but all core gameplay mechanics are accessible without spending Robux.' },
+    { question: 'What platforms support BBQ It?', answer: 'BBQ It is available on Roblox, which runs on PC, Mac, mobile (iOS and Android), and Xbox One.' },
+    { question: 'How do I progress in BBQ It?', answer: 'Start by cooking basic meats and serving customers. Use your earnings to buy better grills, tables, and upgrades. Eventually unlock offline grills, totems, and premium meats for maximum profit.' },
+  ]}
+  relatedGuides={[
+    { title: 'Beginner Guide', url: '/beginner-guide/', description: 'Step-by-step guide for new players.' },
+    { title: 'Meat Tier List', url: '/meat-tier-list/', description: 'All meats ranked from best to worst.' },
+    { title: 'Perfect Cook Guide', url: '/perfect-cook/', description: 'How to get perfect cooks every time.' },
+    { title: 'Grills Guide', url: '/grills/', description: 'All grills compared and ranked.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Game Overview</h2>
+  <p class="text-gray-600 dark:text-gray-400 mb-4">In BBQ It, your goal is to build the most profitable BBQ restaurant on Roblox. You start with a basic grill and work your way up to an empire with multiple grills, smokers, totems, and rare premium meats.</p>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Core Mechanics</h2>
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">🥩 Cooking</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Place raw meats on grills, wait for them to cook, and remove them at the right time for perfect cooks. Overcooked meats burn and lose value.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">💰 Selling</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Cooked meats are sold to customers at tables. Customer offers vary — higher-tier tables attract better offers. Auto Sell can handle this for you.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">⬆️ Upgrades</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Invest cash in faster cooking, better quality, more grill slots, and offline earnings. Each upgrade improves your profit per hour.</p>
+    </div>
+    <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <h3 class="font-bold mb-2">😴 Offline Earnings</h3>
+      <p class="text-sm text-gray-600 dark:text-gray-400">Offline grills and smokers continue cooking while you are away. Your earnings are capped by your offline storage upgrade.</p>
+    </div>
+  </div>
+
+  <h2 class="text-2xl font-bold mb-4 mt-8">Progression Path</h2>
+  <ol class="list-decimal list-inside space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+    <li><strong>Early Game:</strong> Cook Hot Dogs and Chicken on your starting grill. Sell to customers and save cash.</li>
+    <li><strong>Mid Game:</strong> Buy Standard and Pro grills. Start cooking Pork and Salmon. Get a Metal Table.</li>
+    <li><strong>Advanced:</strong> Unlock Elite grills and Offline Grills. Cook Steak and Ribeye for high profits.</li>
+    <li><strong>Endgame:</strong> Dragon Ribs on max grills with totems and mutations. Optimize with calculators for peak efficiency.</li>
+  </ol>
+</ArticleLayout>

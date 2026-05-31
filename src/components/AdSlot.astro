@@ -1,0 +1,25 @@
+---
+import { getAdSlot, shouldRenderSlot } from '@/config/ads';
+
+interface Props {
+  id: string;
+  class?: string;
+}
+
+const { id, class: className } = Astro.props;
+const slot = getAdSlot(id);
+const shouldRender = slot ? shouldRenderSlot(slot) : false;
+const isScriptFormat = slot && (slot.format === 'script' || slot.format === 'popup');
+---
+{shouldRender && isScriptFormat && (
+  <script is:inline src={slot!.scriptUrl} async data-cfasync="false"></script>
+)}
+{shouldRender && isScriptFormat && slot!.containerId && (
+  <div id={slot!.containerId}></div>
+)}
+{shouldRender && !isScriptFormat && (
+  <div class={`flex justify-center my-2 ${className || ''}`} style={`min-height: ${slot!.height}px;`}>
+    <script is:inline define:vars={{ atOptions: { key: slot!.key, format: slot!.format, height: slot!.height, width: slot!.width, params: {} } }}></script>
+    <script is:inline src={slot!.scriptUrl}></script>
+  </div>
+)}

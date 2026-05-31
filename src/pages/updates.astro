@@ -1,0 +1,64 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+---
+<ArticleLayout
+  title="BBQ It Updates — Latest Changes & Patch Notes"
+  description="Track the latest BBQ It Roblox updates, patch notes, new features, and changes. Updated after each game update."
+  quickAnswer="BBQ It receives regular updates with new meats, equipment, features, and balance changes. This page tracks the most recent updates and what changed."
+  faq={[
+    { question: 'How often does BBQ It update?', answer: 'BBQ It typically receives updates every few weeks. Major updates with new content come less frequently, while smaller bug fix patches can arrive anytime.' },
+    { question: 'Where can I find BBQ It update announcements?', answer: 'Update announcements are posted on the official BBQ It Discord server and the Roblox game page description. We track updates here as well.' },
+    { question: 'Do codes expire after updates?', answer: 'Some codes may expire during updates while new ones are added. Always check our Codes page after an update for the latest working codes.' },
+  ]}
+  relatedGuides={[
+    { title: 'Codes', url: '/codes/', description: 'Check for new codes after updates.' },
+    { title: 'Discord', url: '/discord/', description: 'Join the community for update alerts.' },
+    { title: 'Wiki', url: '/wiki/', description: 'Complete game overview.' },
+  ]}
+>
+  <h2 class="text-2xl font-bold mb-4">Recent Updates</h2>
+
+  <div class="space-y-6 mb-8">
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <div class="flex items-center gap-3 mb-2">
+        <span class="px-2 py-0.5 bg-orange-100 dark:bg-orange-900 text-orange-700 dark:text-orange-300 text-xs font-bold rounded">Latest</span>
+        <span class="text-sm text-gray-500">June 2026</span>
+      </div>
+      <h3 class="font-bold mb-2">Summer BBQ Update</h3>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <li>• New summer-themed codes and rewards</li>
+        <li>• Balance adjustments to meat values</li>
+        <li>• Bug fixes for offline earnings calculation</li>
+        <li>• Performance improvements</li>
+      </ul>
+    </div>
+
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <span class="text-sm text-gray-500 mb-2 block">May 2026</span>
+      <h3 class="font-bold mb-2">Quality of Life Update</h3>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <li>• Improved grill UI and cook timers</li>
+        <li>• Auto-sell system improvements</li>
+        <li>• New customer offer types</li>
+        <li>• Mobile controls optimization</li>
+      </ul>
+    </div>
+
+    <div class="p-5 border border-gray-200 dark:border-gray-800 rounded-lg">
+      <span class="text-sm text-gray-500 mb-2 block">April 2026</span>
+      <h3 class="font-bold mb-2">Offline Grills Expansion</h3>
+      <ul class="text-sm text-gray-600 dark:text-gray-400 space-y-1">
+        <li>• New Elite Offline Grill (6 slots)</li>
+        <li>• Increased offline earnings cap</li>
+        <li>• Offline storage upgrade improvements</li>
+        <li>• Fixed offline profit calculation bugs</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="p-4 bg-blue-50 dark:bg-blue-950/30 border border-blue-200 dark:border-blue-800 rounded-lg">
+    <p class="text-sm text-blue-800 dark:text-blue-200">
+      💡 <strong>Tip:</strong> Want to be the first to know about updates? Join the <a href="/discord/" class="underline">official BBQ It Discord</a> for announcements and patch notes.
+    </p>
+  </div>
+</ArticleLayout>

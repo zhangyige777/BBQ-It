@@ -1,0 +1,131 @@
+{
+  "upgrades": [
+    {
+      "id": "table-wood",
+      "name": "Wooden Table",
+      "cost": 0,
+      "effect": "Serves 1 customer at a time",
+      "category": "tables",
+      "tier": "Starter",
+      "description": "The starting table. Can serve one customer."
+    },
+    {
+      "id": "table-metal",
+      "name": "Metal Table",
+      "cost": 800,
+      "effect": "Serves 2 customers at a time",
+      "category": "tables",
+      "tier": "Basic",
+      "description": "Serves two customers simultaneously. Good early upgrade."
+    },
+    {
+      "id": "table-premium",
+      "name": "Premium Table",
+      "cost": 3000,
+      "effect": "Serves 3 customers at a time, +10% offer value",
+      "category": "tables",
+      "tier": "Mid",
+      "description": "Serves three customers and boosts offer values by 10%."
+    },
+    {
+      "id": "table-golden",
+      "name": "Golden Table",
+      "cost": 12000,
+      "effect": "Serves 4 customers, +20% offer value",
+      "category": "tables",
+      "tier": "Advanced",
+      "description": "Top-tier table. Four customers with a 20% value boost."
+    },
+    {
+      "id": "speed-1",
+      "name": "Quick Hands",
+      "cost": 500,
+      "effect": "+10% cook speed",
+      "category": "speed",
+      "tier": "Basic",
+      "description": "Cook meats 10% faster across all grills."
+    },
+    {
+      "id": "speed-2",
+      "name": "Rapid Flip",
+      "cost": 2000,
+      "effect": "+20% cook speed",
+      "category": "speed",
+      "tier": "Mid",
+      "description": "Stacks with Quick Hands for 20% total cook speed bonus."
+    },
+    {
+      "id": "speed-3",
+      "name": "Blaze Cook",
+      "cost": 8000,
+      "effect": "+35% cook speed",
+      "category": "speed",
+      "tier": "Advanced",
+      "description": "Maximum cook speed upgrade. 35% faster cooking."
+    },
+    {
+      "id": "quality-1",
+      "name": "Seasoned Chef",
+      "cost": 1000,
+      "effect": "+15% perfect cook chance",
+      "category": "quality",
+      "tier": "Basic",
+      "description": "Increases the timing window for perfect cooks."
+    },
+    {
+      "id": "quality-2",
+      "name": "Master Chef",
+      "cost": 5000,
+      "effect": "+30% perfect cook chance",
+      "category": "quality",
+      "tier": "Mid",
+      "description": "Significantly widens the perfect cook timing window."
+    },
+    {
+      "id": "quality-3",
+      "name": "BBQ Legend",
+      "cost": 15000,
+      "effect": "+50% perfect cook chance",
+      "category": "quality",
+      "tier": "Advanced",
+      "description": "The best quality upgrade. Nearly guarantees perfect cooks with practice."
+    },
+    {
+      "id": "offline-capacity",
+      "name": "Offline Storage",
+      "cost": 3000,
+      "effect": "+50% offline earnings cap",
+      "category": "offline",
+      "tier": "Mid",
+      "description": "Increases the maximum earnings you can accumulate while offline."
+    },
+    {
+      "id": "offline-speed",
+      "name": "Offline Efficiency",
+      "cost": 6000,
+      "effect": "+25% offline cook speed",
+      "category": "offline",
+      "tier": "Advanced",
+      "description": "Offline grills cook 25% faster while you're away."
+    },
+    {
+      "id": "auto-sell",
+      "name": "Auto Sell",
+      "cost": 4000,
+      "effect": "Automatically sells cooked meats at best available offer",
+      "category": "automation",
+      "tier": "Mid",
+      "description": "Sells cooked meats automatically. Essential for AFK and offline play."
+    },
+    {
+      "id": "weight-boost",
+      "name": "Heavy Hitter",
+      "cost": 7000,
+      "effect": "+20% meat weight",
+      "category": "weight",
+      "tier": "Advanced",
+      "description": "Increases average meat weight, boosting sell value."
+    }
+  ],
+  "_disclaimer": "All values are estimates based on community data. Actual in-game values may differ after updates."
+}

@@ -1,0 +1,103 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { getGrills, getActiveGrills, getOfflineGrills, generateBreadcrumbSchema } from '@/lib/data';
+
+const allGrills = getGrills();
+const activeGrills = getActiveGrills();
+const offlineGrills = getOfflineGrills();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Grills Guide', url: '/grills/' },
+]);
+---
+<BaseLayout title="BBQ It Grills Guide — All Grills Compared" description="Complete BBQ It grills guide comparing all grill types, costs, slots, cook speeds, and offline capabilities. Find the best grill for your stage.">
+  <JsonLd schema={[breadcrumbSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Grills Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Compare every grill in BBQ It — active grills, offline grills, and smokers. Find the best grill for your budget and play style.</p>
+
+    <DataDisclaimer />
+
+    <!-- All Grills Table -->
+    <h2 class="text-2xl font-bold mb-4">All Grills</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-900">
+          <tr>
+            <th class="px-4 py-2 text-left font-bold">Grill</th>
+            <th class="px-4 py-2 text-left font-bold">Type</th>
+            <th class="px-4 py-2 text-right font-bold">Cost</th>
+            <th class="px-4 py-2 text-right font-bold">Slots</th>
+            <th class="px-4 py-2 text-right font-bold">Cook Speed</th>
+            <th class="px-4 py-2 text-left font-bold">Tier</th>
+          </tr>
+        </thead>
+        <tbody>
+          {allGrills.map(grill => (
+            <tr class="border-t border-gray-100 dark:border-gray-800">
+              <td class="px-4 py-2 font-medium">{grill.name}</td>
+              <td class="px-4 py-2">
+                {grill.offline ? (
+                  grill.name.includes('Smoker') ? '🌬️ Smoker' : '😴 Offline'
+                ) : '🔥 Active'}
+              </td>
+              <td class="px-4 py-2 text-right">{grill.cost === 0 ? 'Free' : `${grill.cost.toLocaleString()}`}</td>
+              <td class="px-4 py-2 text-right">{grill.slots}</td>
+              <td class="px-4 py-2 text-right">{(grill.cookSpeed * 100).toFixed(0)}%</td>
+              <td class="px-4 py-2">{grill.tier}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Active Grills -->
+    <h2 class="text-2xl font-bold mb-4">Active Grills</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">Active grills require you to be in the game to cook. They support perfect cooks for maximum profit.</p>
+    <div class="space-y-4 mb-8">
+      {activeGrills.map(grill => (
+        <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold">{grill.name}</h3>
+            <span class="text-sm font-bold text-orange-500">{grill.cost === 0 ? 'Free' : `${grill.cost.toLocaleString()} cash`}</span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{grill.description}</p>
+          <div class="flex gap-4 text-xs text-gray-500">
+            <span>{grill.slots} slots</span>
+            <span>{(grill.cookSpeed * 100).toFixed(0)}% speed</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <!-- Offline Grills -->
+    <h2 class="text-2xl font-bold mb-4">Offline Grills</h2>
+    <p class="text-gray-600 dark:text-gray-400 mb-4">Offline grills cook while you are away. They do NOT produce perfect cooks, but provide passive income.</p>
+    <div class="space-y-4 mb-8">
+      {offlineGrills.filter(g => !g.name.includes('Smoker')).map(grill => (
+        <div class="p-4 border border-gray-200 dark:border-gray-800 rounded-lg">
+          <div class="flex justify-between items-start mb-2">
+            <h3 class="font-bold">{grill.name}</h3>
+            <span class="text-sm font-bold text-orange-500">{grill.cost.toLocaleString()} cash</span>
+          </div>
+          <p class="text-sm text-gray-600 dark:text-gray-400 mb-2">{grill.description}</p>
+          <div class="flex gap-4 text-xs text-gray-500">
+            <span>{grill.slots} slots</span>
+            <span>{(grill.cookSpeed * 100).toFixed(0)}% speed</span>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Grill Layout', url: '/grill-layout/', description: 'Optimal grill placement guide.' },
+      { title: 'Offline Grills', url: '/offline-grills/', description: 'Detailed offline grill guide.' },
+      { title: 'Smokers Guide', url: '/smokers/', description: 'Smoker mechanics and tips.' },
+      { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades to boost grills.' },
+    ]} />
+  </article>
+</BaseLayout>

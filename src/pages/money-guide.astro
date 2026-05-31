@@ -1,0 +1,112 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import { generateBreadcrumbSchema } from '@/lib/data';
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Money Guide', url: '/money-guide/' },
+]);
+---
+<BaseLayout title="BBQ It Money Guide — How to Make Money Fast" description="Complete BBQ It money guide with strategies for active play, offline earnings, best meats for profit, and progression milestones.">
+  <JsonLd schema={[breadcrumbSchema]} />
+
+  <article class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Money Guide</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Everything you need to know about making money in BBQ It — from your first 100 cash to endgame profit optimization.</p>
+
+    <!-- Quick Summary -->
+    <div class="mb-8 p-4 bg-orange-50 dark:bg-orange-950/30 border border-orange-200 dark:border-orange-800 rounded-lg">
+      <p class="font-medium text-orange-800 dark:text-orange-200">
+        💰 <strong>Core Strategy:</strong> Perfect cooks + right meat for your stage + efficient grill setup = maximum profit. Add offline grills for passive income.
+      </p>
+    </div>
+
+    <!-- Active Strategies -->
+    <h2 class="text-2xl font-bold mb-4">Active Money Strategies</h2>
+    <div class="space-y-4 mb-8">
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">1. Always Perfect Cook</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Perfect cooks sell for 50-75% more. This is the single biggest profit lever. Practice with cheap meats until you're consistent.</p>
+      </div>
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">2. Use the Right Meat</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Don't jump to expensive meats too early. Use the <a href="/best-meat/" class="text-orange-500 underline">Best Meat guide</a> to pick the right meat for your equipment and skill level.</p>
+      </div>
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">3. Maximize Grill Utilization</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Keep all grills running at all times. Stagger start times so you can manage perfect cook windows on each one.</p>
+      </div>
+      <div class="p-4 border-l-4 border-orange-500 bg-orange-50 dark:bg-orange-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">4. Accept the Best Offers</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Higher-tier tables attract better customer offers. Don't accept lowball offers — wait for better ones or use Auto Sell at a good threshold.</p>
+      </div>
+    </div>
+
+    <!-- Offline Strategies -->
+    <h2 class="text-2xl font-bold mb-4">Offline Money Strategies</h2>
+    <div class="space-y-4 mb-8">
+      <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">1. Invest in Offline Grills</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Each offline grill adds passive income. Start with the Basic Offline Grill and upgrade as you can afford it.</p>
+      </div>
+      <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">2. Upgrade Offline Storage</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Without Offline Storage, your passive earnings are capped low. This upgrade should come soon after your first offline grill.</p>
+      </div>
+      <div class="p-4 border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-950/30 rounded-r-lg">
+        <h3 class="font-bold mb-1">3. Use Premium Meats for Offline</h3>
+        <p class="text-sm text-gray-600 dark:text-gray-400">Since offline grills produce normal cooks, use the meat with the highest normal-cook profit margin on your offline grills.</p>
+      </div>
+    </div>
+
+    <!-- Milestones -->
+    <h2 class="text-2xl font-bold mb-4">Progression Milestones</h2>
+    <div class="overflow-x-auto mb-8">
+      <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+        <thead class="bg-gray-50 dark:bg-gray-900">
+          <tr>
+            <th class="px-4 py-2 text-left font-bold">Milestone</th>
+            <th class="px-4 py-2 text-right font-bold">Cash Target</th>
+            <th class="px-4 py-2 text-left font-bold">Key Purchase</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2">First upgrade</td>
+            <td class="px-4 py-2 text-right">500</td>
+            <td class="px-4 py-2">Standard Grill</td>
+          </tr>
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2">Table upgrade</td>
+            <td class="px-4 py-2 text-right">800</td>
+            <td class="px-4 py-2">Metal Table</td>
+          </tr>
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2">Mid-game setup</td>
+            <td class="px-4 py-2 text-right">~5,000</td>
+            <td class="px-4 py-2">Auto Sell + Offline Grill</td>
+          </tr>
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2">Advanced setup</td>
+            <td class="px-4 py-2 text-right">~15,000</td>
+            <td class="px-4 py-2">Elite Grill + Master Chef</td>
+          </tr>
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2">Endgame</td>
+            <td class="px-4 py-2 text-right">~50,000+</td>
+            <td class="px-4 py-2">Dragon Ribs + Full upgrades</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Meat Profit Calculator', url: '/calculator/meat-profit/', description: 'Calculate your meat profits.' },
+      { title: 'Best Meat', url: '/best-meat/', description: 'Best meat for each stage.' },
+      { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades to buy.' },
+      { title: 'Offline Grills', url: '/offline-grills/', description: 'Passive income guide.' },
+    ]} />
+  </article>
+</BaseLayout>

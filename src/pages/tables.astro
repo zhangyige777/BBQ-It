@@ -1,0 +1,47 @@
+---
+import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
+import { getUpgradesByCategory } from '@/lib/data';
+const tableUpgrades = getUpgradesByCategory('tables');
+---
+<ArticleLayout
+  title="BBQ It Tables Guide — All Tables Compared"
+  description="Complete guide to tables in BBQ It. Compare table types, costs, capacities, and which tables to buy for faster money."
+  quickAnswer="Tables determine how many customers you can serve at once and the value of customer offers. Upgrade from Wooden to Metal table as soon as possible."
+  faq={[
+    { question: 'What do tables do in BBQ It?', answer: 'Tables serve customers. Higher-tier tables serve more customers simultaneously and increase offer values. Better tables mean more income per minute.' },
+    { question: 'Which table should I buy first?', answer: 'The Metal Table (800 cash) is your first priority upgrade. It doubles your customer capacity from 1 to 2, effectively doubling your income.' },
+    { question: 'Are tables worth the investment?', answer: 'Yes. Tables have one of the best ROIs in the game. More customers served means more income without any additional cooking effort.' },
+  ]}
+  relatedGuides={[
+    { title: 'Upgrades Guide', url: '/upgrades/', description: 'All upgrades ranked.' },
+    { title: 'What to Buy First', url: '/what-to-buy-first/', description: 'Best purchase priority.' },
+    { title: 'Money Guide', url: '/money-guide/', description: 'Complete money-making guide.' },
+  ]}
+>
+  <DataDisclaimer />
+
+  <h2 class="text-2xl font-bold mb-4">All Tables</h2>
+  <div class="overflow-x-auto mb-8">
+    <table class="w-full text-sm border border-gray-200 dark:border-gray-800 rounded-lg overflow-hidden">
+      <thead class="bg-gray-50 dark:bg-gray-900">
+        <tr>
+          <th class="px-4 py-2 text-left font-bold">Table</th>
+          <th class="px-4 py-2 text-right font-bold">Cost</th>
+          <th class="px-4 py-2 text-right font-bold">Customers</th>
+          <th class="px-4 py-2 text-left font-bold">Bonus</th>
+        </tr>
+      </thead>
+      <tbody>
+        {tableUpgrades.map(table => (
+          <tr class="border-t border-gray-100 dark:border-gray-800">
+            <td class="px-4 py-2 font-medium">{table.name}</td>
+            <td class="px-4 py-2 text-right">{table.cost === 0 ? 'Free' : table.cost.toLocaleString()}</td>
+            <td class="px-4 py-2 text-right">{table.tier}</td>
+            <td class="px-4 py-2">{table.effect}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</ArticleLayout>

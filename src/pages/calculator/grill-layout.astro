@@ -1,0 +1,34 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import GrillLayoutPlanner from '@/components/GrillLayoutPlanner.tsx';
+import { generateBreadcrumbSchema, generateWebApplicationSchema } from '@/lib/data';
+
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Grill Layout Planner', url: '/calculator/grill-layout/' },
+]);
+const webAppSchema = generateWebApplicationSchema(
+  'BBQ It Grill Layout Planner',
+  'Plan the optimal grill layout for your BBQ It setup. Get beginner, mid-game, and offline-focused layouts.'
+);
+---
+<BaseLayout title="BBQ It Grill Layout Planner — Optimal Setup Guide" description="Free BBQ It grill layout planner. Get recommended grill setups for every stage — beginner, mid-game, and offline-focused layouts.">
+  <JsonLd schema={[breadcrumbSchema, webAppSchema]} />
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Grill Layout Planner</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Plan the optimal grill layout for your stage and play style.</p>
+
+    <div class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl mb-8">
+      <GrillLayoutPlanner client:load />
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Grills Guide', url: '/grills/', description: 'All grills compared.' },
+      { title: 'Grill Layout Guide', url: '/grill-layout/', description: 'Optimal placement tips.' },
+      { title: 'Offline Grills', url: '/offline-grills/', description: 'Passive income setup.' },
+    ]} />
+  </section>
+</BaseLayout>

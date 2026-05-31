@@ -1,0 +1,35 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import UpgradeROICalculator from '@/components/UpgradeROICalculator.tsx';
+import { getUpgrades, generateBreadcrumbSchema, generateWebApplicationSchema } from '@/lib/data';
+
+const upgrades = getUpgrades();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Upgrade ROI Calculator', url: '/calculator/upgrade-roi/' },
+]);
+const webAppSchema = generateWebApplicationSchema(
+  'BBQ It Upgrade ROI Calculator',
+  'Find the best upgrade to buy next in BBQ It. Compare payback times and ROI rankings.'
+);
+---
+<BaseLayout title="BBQ It Upgrade ROI Calculator — Best Upgrade to Buy" description="Free BBQ It upgrade ROI calculator. Input your current setup and compare upgrades to find the best purchase with the fastest payback.">
+  <JsonLd schema={[breadcrumbSchema, webAppSchema]} />
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Upgrade ROI Calculator</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Find the best upgrade to buy next based on your current setup and play style.</p>
+
+    <div class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl mb-8">
+      <UpgradeROICalculator client:load upgrades={upgrades.map(u => ({ id: u.id, name: u.name, cost: u.cost, effect: u.effect, category: u.category }))} />
+    </div>
+
+    <RelatedGuides links={[
+      { title: 'Upgrades Guide', url: '/upgrades/', description: 'All upgrades ranked.' },
+      { title: 'What to Buy First', url: '/what-to-buy-first/', description: 'Purchase priority guide.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'How to earn money fast.' },
+    ]} />
+  </section>
+</BaseLayout>

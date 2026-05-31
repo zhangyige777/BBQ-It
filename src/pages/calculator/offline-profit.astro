@@ -1,0 +1,43 @@
+---
+import BaseLayout from '@/layouts/BaseLayout.astro';
+import JsonLd from '@/components/JsonLd.astro';
+import RelatedGuides from '@/components/RelatedGuides.astro';
+import OfflineProfitCalculator from '@/components/OfflineProfitCalculator.tsx';
+import { getMeats, generateBreadcrumbSchema, generateWebApplicationSchema } from '@/lib/data';
+
+const meats = getMeats();
+const breadcrumbSchema = generateBreadcrumbSchema([
+  { name: 'Home', url: '/' },
+  { name: 'Offline Profit Calculator', url: '/calculator/offline-profit/' },
+]);
+const webAppSchema = generateWebApplicationSchema(
+  'BBQ It Offline Profit Calculator',
+  'Estimate your offline earnings in BBQ It based on your grill setup, meat choice, and duration.'
+);
+---
+<BaseLayout title="BBQ It Offline Profit Calculator — Estimate Passive Earnings" description="Free BBQ It offline profit calculator. Estimate how much money you earn while away based on your offline grills, meat type, and duration.">
+  <JsonLd schema={[breadcrumbSchema, webAppSchema]} />
+
+  <section class="max-w-4xl mx-auto px-4 py-12">
+    <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Offline Profit Calculator</h1>
+    <p class="text-lg text-gray-600 dark:text-gray-400 mb-8">Estimate how much you earn while away from the game with offline grills.</p>
+
+    <div class="p-6 border border-gray-200 dark:border-gray-800 rounded-xl mb-8">
+      <OfflineProfitCalculator client:load meats={meats.map(m => ({ id: m.id, name: m.name, rawCost: m.rawCost, cookValue: m.cookValue, perfectValue: m.perfectValue, cookTime: m.cookTime }))} />
+    </div>
+
+    <h2 class="text-2xl font-bold mb-4">Offline Earnings Tips</h2>
+    <ul class="space-y-2 text-gray-600 dark:text-gray-400 mb-8">
+      <li>• Offline grills cook at normal quality — no perfect cooks.</li>
+      <li>• Upgrade Offline Storage to increase your earnings cap.</li>
+      <li>• Use the highest-tier meat you can afford for best offline profit.</li>
+      <li>• Log in to collect earnings before you hit the cap.</li>
+    </ul>
+
+    <RelatedGuides links={[
+      { title: 'Offline Grills Guide', url: '/offline-grills/', description: 'Complete offline grill guide.' },
+      { title: 'Grills Guide', url: '/grills/', description: 'All grills compared.' },
+      { title: 'Money Guide', url: '/money-guide/', description: 'Full money-making guide.' },
+    ]} />
+  </section>
+</BaseLayout>

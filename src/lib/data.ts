@@ -137,7 +137,7 @@ export function generateBreadcrumbSchema(items: { name: string; url: string }[])
       '@type': 'ListItem',
       position: i + 1,
       name: item.name,
-      item: `${baseUrl}${item.url}`,
+      item: new URL(item.url, baseUrl).href,
     })),
   };
 }
@@ -188,7 +188,7 @@ export function generateItemListSchema(items: { name: string; url: string; posit
       '@type': 'ListItem',
       position: item.position,
       name: item.name,
-      url: `${baseUrl}${item.url}`,
+      url: new URL(item.url, baseUrl).href,
     })),
   };
 }

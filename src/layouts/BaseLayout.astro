@@ -14,7 +14,9 @@ interface Props {
 
 const config = getGameConfig();
 const { title = config.seo.siteTitle, description = config.seo.siteDescription, canonical, ogImage = config.seo.defaultOgImage } = Astro.props;
-const canonicalURL = canonical ? new URL(canonical, Astro.site) : new URL(Astro.url.pathname, Astro.site);
+const siteUrl = config.seo.baseUrl;
+const canonicalURL = new URL(canonical || Astro.url.pathname, siteUrl);
+const ogImageURL = new URL(ogImage, siteUrl);
 const keywords = [...config.seo.primaryKeywords, ...config.seo.secondaryKeywords].join(', ');
 const gaMeasurementId = import.meta.env.PUBLIC_GA_MEASUREMENT_ID;
 const hasGA = gaMeasurementId && !gaMeasurementId.includes('PLACEHOLDER');
@@ -33,23 +35,27 @@ const hasGA = gaMeasurementId && !gaMeasurementId.includes('PLACEHOLDER');
   <meta property="og:title" content={title} />
   <meta property="og:description" content={description} />
   <meta property="og:url" content={canonicalURL.href} />
-  <meta property="og:image" content={`${config.seo.baseUrl}${ogImage}`} />
+  <meta property="og:image" content={ogImageURL.href} />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content={config.game.name} />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content={title} />
   <meta name="twitter:description" content={description} />
-  <meta name="twitter:image" content={`${config.seo.baseUrl}${ogImage}`} />
+  <meta name="twitter:image" content={ogImageURL.href} />
 
   <!-- Google tag (gtag.js) — TODO: Replace GA4 measurement ID -->
-  <script is:inline src="https://www.googletagmanager.com/gtag/js?id=G-PLACEHOLDER" async></script>
-  <script is:inline>
+  {hasGA && (
+    <>
+  <script is:inline src={`https://www.googletagmanager.com/gtag/js?id=${gaMeasurementId}`} async></script>
+  <script is:inline define:vars={{ gaMeasurementId }}>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
-    gtag('config', 'G-PLACEHOLDER');
+    gtag('config', gaMeasurementId);
     function trackEvent(name,params){gtag('event',name,params);}
   </script>
+    </>
+  )}
 
   <!-- Aggressive ad: popup (only renders script when enabled in ads.ts) -->
   <AdSlot id="popup" />

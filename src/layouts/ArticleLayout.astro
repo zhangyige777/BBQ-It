@@ -20,10 +20,11 @@ interface Props {
 }
 
 const { title, description, quickAnswer, summaryRows, summaryCaption, faq, relatedGuides, canonical, ogImage } = Astro.props;
+const currentPath = canonical || Astro.url.pathname;
 
 const breadcrumbSchema = generateBreadcrumbSchema([
   { name: 'Home', url: '/' },
-  { name: title, url: canonical || '/' },
+  { name: title, url: currentPath },
 ]);
 
 const schemas: object[] = [breadcrumbSchema];

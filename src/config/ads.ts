@@ -105,6 +105,9 @@ export function isAggressiveFormatsEnabled(): boolean {
 }
 
 export function shouldRenderSlot(slot: AdSlotConfig): boolean {
+  if (slot.key.includes('PLACEHOLDER') || slot.scriptUrl.includes('PLACEHOLDER')) {
+    return false;
+  }
   if (slot.aggressive) {
     return aggressiveFormatsEnabled;
   }

@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
 ---
 <ArticleLayout
   title="BBQ It Profit Strategy — Advanced Money Optimization"
@@ -17,6 +18,8 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
     { title: 'Totems Guide', url: '/totems/', description: 'Boost your bonuses.' },
   ]}
 >
+  <DataDisclaimer />
+
   <h2 class="text-2xl font-bold mb-4">The Profit Formula</h2>
   <div class="p-4 bg-gray-50 dark:bg-gray-900 rounded-lg font-mono text-sm mb-8">
     <p><strong>Profit/hr =</strong> (Selling Price − Raw Cost) × Cooks/hr × # Grills × Bonus Multipliers</p>

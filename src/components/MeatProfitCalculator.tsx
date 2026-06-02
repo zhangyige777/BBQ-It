@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 interface Meat {
   id: string; name: string; rawCost: number; cookValue: number;
@@ -19,6 +19,10 @@ export default function MeatProfitCalculator({ meats }: Props) {
   const [bonusMultiplier, setBonusMultiplier] = useState(1.0);
 
   const selectedMeat = meats.find(m => m.id === meatId);
+
+  useEffect(() => {
+    window.trackEvent?.('calculator_used', { name: 'meat_profit' });
+  }, []);
 
   const handleMeatChange = (id: string) => {
     const meat = meats.find(m => m.id === id);

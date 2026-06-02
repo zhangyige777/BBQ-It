@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
 ---
 <ArticleLayout
   title="BBQ It Mutations Guide — How Mutations Work"
@@ -16,6 +17,8 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
     { title: 'Meat Weight Calculator', url: '/calculator/meat-weight/', description: 'Calculate mutated meat value.' },
   ]}
 >
+  <DataDisclaimer />
+
   <h2 class="text-2xl font-bold mb-4">Mutation Types</h2>
   <div class="space-y-3 mb-8">
     <div class="p-3 border border-gray-200 dark:border-gray-800 rounded-lg flex justify-between items-center">

@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 interface Meat { id: string; name: string; rawCost: number; cookValue: number; perfectValue: number; cookTime: number; weight: number; }
 interface Props { meats: Meat[] }
@@ -11,6 +11,10 @@ export default function MeatWeightCalculator({ meats }: Props) {
   const [cookQuality, setCookQuality] = useState<'normal' | 'perfect'>('perfect');
 
   const selectedMeat = meats.find(m => m.id === meatId);
+
+  useEffect(() => {
+    window.trackEvent?.('calculator_used', { name: 'meat_weight' });
+  }, []);
 
   const handleMeatChange = (id: string) => {
     const m = meats.find(x => x.id === id);

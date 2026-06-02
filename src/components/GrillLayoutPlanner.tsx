@@ -1,11 +1,15 @@
 'use client';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function GrillLayoutPlanner() {
   const [numGrills, setNumGrills] = useState(4);
   const [numTables, setNumTables] = useState(1);
   const [stage, setStage] = useState<'early' | 'mid' | 'late'>('mid');
   const [playStyle, setPlayStyle] = useState<'active' | 'offline' | 'mixed'>('active');
+
+  useEffect(() => {
+    window.trackEvent?.('calculator_used', { name: 'grill_layout' });
+  }, []);
 
   const getLayout = () => {
     const activeGrills = playStyle === 'offline' ? Math.max(1, Math.floor(numGrills * 0.2)) : playStyle === 'mixed' ? Math.ceil(numGrills * 0.5) : numGrills;

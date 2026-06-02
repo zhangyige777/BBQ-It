@@ -15,64 +15,80 @@ export interface AdSlotConfig {
 }
 
 // ─── Ad Slot Definitions ──────────────────────────────────────
-// TODO: Replace placeholder keys with real Adsterra keys for the BBQ It site
 
 const adSlots: AdSlotConfig[] = [
-  // Safe slots — always render (when enabled)
+  // ── Banner slots — always render ──
+  // 728x90 banner after header (all pages)
   {
     id: 'after-header',
-    key: 'PLACEHOLDER_BANNER_728x90',
+    key: '15ce9c139c20adf11145e670f717a1d9',
     format: 'iframe',
     width: 728,
     height: 90,
-    scriptUrl: 'https://www.highperformanceformat.com/PLACEHOLDER_KEY/invoke.js',
+    scriptUrl: 'https://tolerateshyrenamed.com/15ce9c139c20adf11145e670f717a1d9/invoke.js',
     aggressive: false,
   },
+  // 300x250 banner before footer (desktop)
   {
     id: 'before-footer-desktop',
-    key: 'PLACEHOLDER_BANNER_300x250',
+    key: 'e76ddce0c5fd88a8ea9e4c1c66c35568',
     format: 'iframe',
     width: 300,
     height: 250,
-    scriptUrl: 'https://www.highperformanceformat.com/PLACEHOLDER_KEY/invoke.js',
+    scriptUrl: 'https://tolerateshyrenamed.com/e76ddce0c5fd88a8ea9e4c1c66c35568/invoke.js',
     aggressive: false,
   },
+  // 320x50 banner before footer (mobile)
   {
     id: 'before-footer-mobile',
-    key: 'PLACEHOLDER_BANNER_320x50',
+    key: 'bfae236fa1c40bb93264ca845006ffd3',
     format: 'iframe',
     width: 320,
     height: 50,
-    scriptUrl: 'https://www.highperformanceformat.com/PLACEHOLDER_KEY/invoke.js',
+    scriptUrl: 'https://tolerateshyrenamed.com/bfae236fa1c40bb93264ca845006ffd3/invoke.js',
     aggressive: false,
   },
+  // 300x250 banner mid-article (ArticleLayout pages)
   {
     id: 'mid-content',
-    key: 'PLACEHOLDER_MID_BANNER',
+    key: 'e76ddce0c5fd88a8ea9e4c1c66c35568',
     format: 'iframe',
     width: 300,
     height: 250,
-    scriptUrl: 'https://www.highperformanceformat.com/PLACEHOLDER_KEY/invoke.js',
+    scriptUrl: 'https://tolerateshyrenamed.com/e76ddce0c5fd88a8ea9e4c1c66c35568/invoke.js',
     aggressive: false,
   },
-  // Aggressive slots — only render when aggressiveFormatsEnabled is true
+  // 300x250 banner homepage feed
   {
-    id: 'popup',
-    key: 'PLACEHOLDER_POPUP',
-    format: 'popup',
+    id: 'home-feed',
+    key: 'e76ddce0c5fd88a8ea9e4c1c66c35568',
+    format: 'iframe',
+    width: 300,
+    height: 250,
+    scriptUrl: 'https://tolerateshyrenamed.com/e76ddce0c5fd88a8ea9e4c1c66c35568/invoke.js',
+    aggressive: false,
+  },
+
+  // ── Native Banner — always render (safe format) ──
+  {
+    id: 'native-banner',
+    key: 'abad091f51ad558460bad1d9dfd3e37d',
+    format: 'native-banner',
     width: 0,
     height: 0,
-    containerId: 'container-placeholder-popup',
-    scriptUrl: 'https://plPLACEHOLDER.effectivecpmnetwork.com/PLACEHOLDER/invoke.js',
-    aggressive: true,
+    containerId: 'container-abad091f51ad558460bad1d9dfd3e37d',
+    scriptUrl: 'https://tolerateshyrenamed.com/abad091f51ad558460bad1d9dfd3e37d/invoke.js',
+    aggressive: false,
   },
+
+  // ── Aggressive — Social Bar (only when aggressiveFormatsEnabled) ──
   {
-    id: 'bottom-script',
-    key: 'PLACEHOLDER_BOTTOM',
+    id: 'social-bar',
+    key: '5e096652c1c98e1f67aff2f1625b0586',
     format: 'script',
     width: 0,
     height: 0,
-    scriptUrl: 'https://plPLACEHOLDER.effectivecpmnetwork.com/PLACEHOLDER/PLACEHOLDER.js',
+    scriptUrl: 'https://tolerateshyrenamed.com/5e/09/66/5e096652c1c98e1f67aff2f1625b0586.js',
     aggressive: true,
   },
 ];
@@ -80,7 +96,7 @@ const adSlots: AdSlotConfig[] = [
 // ─── Feature Toggles ──────────────────────────────────────────
 
 const adultAdsEnabled = false;
-const aggressiveFormatsEnabled = false;
+const aggressiveFormatsEnabled = true;
 
 // ─── Accessors ────────────────────────────────────────────────
 

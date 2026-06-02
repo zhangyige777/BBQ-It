@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 interface Meat { id: string; name: string; rawCost: number; cookValue: number; perfectValue: number; cookTime: number; }
 interface Props { meats: Meat[] }
@@ -10,6 +10,10 @@ export default function OfflineProfitCalculator({ meats }: Props) {
   const [avgCookValue, setAvgCookValue] = useState(meats[0]?.cookValue || 0);
   const [duration, setDuration] = useState(8);
   const [bonus, setBonus] = useState(1.0);
+
+  useEffect(() => {
+    window.trackEvent?.('calculator_used', { name: 'offline_profit' });
+  }, []);
 
   const handleMeatChange = (id: string) => {
     const m = meats.find(x => x.id === id);

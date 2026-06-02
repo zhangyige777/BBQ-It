@@ -2,6 +2,7 @@
 import BaseLayout from '@/layouts/BaseLayout.astro';
 import JsonLd from '@/components/JsonLd.astro';
 import RelatedGuides from '@/components/RelatedGuides.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
 import { generateBreadcrumbSchema } from '@/lib/data';
 
 const breadcrumbSchema = generateBreadcrumbSchema([
@@ -14,6 +15,7 @@ const breadcrumbSchema = generateBreadcrumbSchema([
 
   <article class="max-w-4xl mx-auto px-4 py-12">
     <h1 class="text-3xl md:text-4xl font-bold mb-4">BBQ It Money Guide</h1>
+    <DataDisclaimer />
     <p class="text-lg text-gray-600 dark:text-gray-400 mb-6">Everything you need to know about making money in BBQ It — from your first 100 cash to endgame profit optimization.</p>
 
     <!-- Quick Summary -->

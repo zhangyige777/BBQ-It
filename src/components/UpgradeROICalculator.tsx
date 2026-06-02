@@ -1,5 +1,5 @@
 'use client';
-import { useState, useMemo } from 'react';
+import { useEffect, useState, useMemo } from 'react';
 
 interface Upgrade { id: string; name: string; cost: number; effect: string; category: string; }
 interface Props { upgrades: Upgrade[] }
@@ -12,6 +12,10 @@ export default function UpgradeROICalculator({ upgrades }: Props) {
   const [upgradeCost, setUpgradeCost] = useState(3000);
   const [incomeIncrease, setIncomeIncrease] = useState(20);
   const [playStyle, setPlayStyle] = useState<'active' | 'offline' | 'mixed'>('active');
+
+  useEffect(() => {
+    window.trackEvent?.('calculator_used', { name: 'upgrade_roi' });
+  }, []);
 
   const results = useMemo(() => {
     const activeMultiplier = playStyle === 'active' ? 1.0 : playStyle === 'offline' ? 0.5 : 0.75;

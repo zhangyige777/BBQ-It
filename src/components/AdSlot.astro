@@ -9,7 +9,7 @@ interface Props {
 const { id, class: className } = Astro.props;
 const slot = getAdSlot(id);
 const shouldRender = slot ? shouldRenderSlot(slot) : false;
-const isScriptFormat = slot && (slot.format === 'script' || slot.format === 'popup');
+const isScriptFormat = slot && (slot.format === 'script' || slot.format === 'popup' || slot.format === 'native-banner');
 ---
 {shouldRender && isScriptFormat && (
   <script is:inline src={slot!.scriptUrl} async data-cfasync="false"></script>

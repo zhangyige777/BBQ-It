@@ -1,5 +1,6 @@
 ---
 import ArticleLayout from '@/layouts/ArticleLayout.astro';
+import DataDisclaimer from '@/components/DataDisclaimer.astro';
 ---
 <ArticleLayout
   title="BBQ It Totems Guide — Types, Effects & Best Totems"
@@ -16,6 +17,8 @@ import ArticleLayout from '@/layouts/ArticleLayout.astro';
     { title: 'Upgrades Guide', url: '/upgrades/', description: 'Best upgrades to pair with totems.' },
   ]}
 >
+  <DataDisclaimer />
+
   <h2 class="text-2xl font-bold mb-4">Totem Types</h2>
   <p class="text-gray-600 dark:text-gray-400 mb-4">Totems fall into several categories based on the bonus they provide:</p>
   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8">
